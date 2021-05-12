@@ -3,7 +3,7 @@ public final class StringUtil {
     private StringUtil() {
     }
 
-    public static String[] split(String sentence) {
+    public final static String[] splitByComma(String sentence) {
         return sentence.split(",");
     }
 }

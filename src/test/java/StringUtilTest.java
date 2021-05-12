@@ -5,12 +5,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StringUtilTest {
 
     @Test
-    void splitTest() {
+    void splitByCommaTest() {
         // given
         String sentence = "1,2";
 
         // when
-        String[] splitSentence = StringUtil.split(sentence);
+        String[] splitSentence = StringUtil.splitByComma(sentence);
 
         // then
         assertThat(splitSentence).containsExactly("1", "2");
@@ -19,7 +19,7 @@ class StringUtilTest {
         sentence = "1";
 
         // when
-        splitSentence = StringUtil.split(sentence);
+        splitSentence = StringUtil.splitByComma(sentence);
 
         //then
         assertThat(splitSentence).containsExactly("1");
