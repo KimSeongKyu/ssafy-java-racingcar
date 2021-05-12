@@ -24,4 +24,17 @@ class StringUtilTest {
         //then
         assertThat(splitSentence).containsExactly("1");
     }
+
+    @Test
+    void removeBracketTest() {
+        // given
+        String sentenceWithBracket = "(1,2)";
+        String expectedSentence = "1,2";
+
+        // when
+        String sentenceWithoutBracket = StringUtil.removeBracket(sentenceWithBracket);
+
+        // then
+        assertThat(sentenceWithoutBracket).isEqualTo(expectedSentence);
+    }
 }
