@@ -1,6 +1,7 @@
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.*;
 
 class StringUtilTest {
 
@@ -36,5 +37,29 @@ class StringUtilTest {
 
         // then
         assertThat(sentenceWithoutBracket).isEqualTo(expectedSentence);
+    }
+
+    @DisplayName("문자열 'abc' 내에 있는 특정 위치의 문자를 가져오는 테스트")
+    @Test
+    void getCharacterAtIndexTest() {
+        // given
+        String sentence = "abc";
+        int index = 2;
+        char expectedCharacter = 'c';
+
+        // when
+        char character = StringUtil.getCharacterAtIndex(index, sentence);
+
+        // then
+        assertThat(character).isEqualTo(expectedCharacter);
+
+        // given
+        final int indexOutOfSentence = sentence.length() + 1;
+
+        // then
+        assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> {
+            // when
+            StringUtil.getCharacterAtIndex(indexOutOfSentence, sentence);
+        });
     }
 }
