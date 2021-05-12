@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,5 +32,12 @@ public class SetTest {
 
         // then
         assertThat(setSize).isEqualTo(expectedSetSize);
+    }
+
+    @DisplayName("Set이 1,2,3을 원소로 갖는지 확인하는 테스트")
+    @ParameterizedTest(name = "{index}. Set이 {0}를 원소로 갖는지 확인하는 테스트")
+    @ValueSource(ints = {1, 2, 3})
+    void containOneTwoThreeTest(int number) {
+        assertThat(numbers.contains(number)).isTrue();
     }
 }
