@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class StringUtilTest {
 
+    @DisplayName("문자열을 ','로 분리하는 테스트")
     @Test
     void splitByCommaTest() {
         // given
@@ -26,6 +27,7 @@ class StringUtilTest {
         assertThat(splitSentence).containsExactly("1");
     }
 
+    @DisplayName("문자열 '(1,2)'의 '()'를 제거하는 테스트")
     @Test
     void removeBracketTest() {
         // given
