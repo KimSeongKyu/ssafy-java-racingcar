@@ -1,30 +1,33 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.Arrays;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
 
 class StringUtilTest {
 
-    @DisplayName("문자열을 ','로 분리하는 테스트")
-    @Test
-    void splitByCommaTest() {
-        // given
-        String sentence = "1,2";
-
+    @DisplayName("주어진 문자열을 ','로 분리하는 테스트")
+    @ParameterizedTest(name = "문자열 ''{0}''을 ','로 분리하는 테스트")
+    @MethodSource(value = "provideStringsForSplitCommaTest")
+    void splitByCommaTest(String sentence, String... expectedSentence) {
         // when
         String[] splitSentence = StringUtil.splitByComma(sentence);
-
+;
         // then
-        assertThat(splitSentence).containsExactly("1", "2");
+        assertThat(splitSentence).containsExactly(expectedSentence);
+    }
 
-        // given
-        sentence = "1";
-
-        // when
-        splitSentence = StringUtil.splitByComma(sentence);
-
-        //then
-        assertThat(splitSentence).containsExactly("1");
+    static Stream<Arguments> provideStringsForSplitCommaTest() {
+        return Stream.of(
+                Arguments.of("1,2", new String[]{"1","2"}),
+                Arguments.of("1", new String[]{"1"})
+        );
     }
 
     @DisplayName("문자열 '(1,2)'의 '()'를 제거하는 테스트")
