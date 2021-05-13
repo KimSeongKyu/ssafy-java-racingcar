@@ -11,7 +11,7 @@ public final class StringUtil {
     }
 
     public final static String removeBracket(final String sentenceWithBracket) {
-        return sentenceWithBracket.substring(ONE, sentenceWithBracket.length() - ONE);
+        return sentenceWithBracket.substring(ONE, Math.subtractExact(sentenceWithBracket.length(), ONE));
     }
 
     public final static char getCharacterAtIndex(final int index, final String sentence) {
