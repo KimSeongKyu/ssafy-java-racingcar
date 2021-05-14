@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 class StringCalculatorTest {
 
     @DisplayName(value = "두 수에 대한 덧셈 테스트")
-    @ParameterizedTest(name = "{index}. {0}+{1}={2} 덧셈 테스트")
+    @ParameterizedTest(name = "{index}. 피연산자: [{0},{1}] 결과: [{2}]")
     @CsvSource(value = {
             "0,0,0",
             "10,20,30",
