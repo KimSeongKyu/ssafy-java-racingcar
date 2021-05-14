@@ -17,4 +17,8 @@ public final class StringCalculator {
     public final static BigDecimal multiply(BigDecimal leftOperand, BigDecimal rightOperand) {
         return leftOperand.multiply(rightOperand);
     }
+
+    public final static BigDecimal divide(BigDecimal leftOperand, BigDecimal rightOperand) {
+        return leftOperand.divide(rightOperand);
+    }
 }
