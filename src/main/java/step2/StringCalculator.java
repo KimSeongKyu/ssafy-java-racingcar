@@ -13,4 +13,8 @@ public final class StringCalculator {
     public final static BigDecimal subtract(BigDecimal leftOperand, BigDecimal rightOperand) {
         return leftOperand.subtract(rightOperand);
     }
+
+    public final static BigDecimal multiply(BigDecimal leftOperand, BigDecimal rightOperand) {
+        return leftOperand.multiply(rightOperand);
+    }
 }
