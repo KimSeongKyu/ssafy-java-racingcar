@@ -1,3 +1,5 @@
+package step2;
+
 public final class StringCalculator {
 
     private StringCalculator(){}

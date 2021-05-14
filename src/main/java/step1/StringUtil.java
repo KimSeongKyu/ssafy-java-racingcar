@@ -1,3 +1,5 @@
+package step1;
+
 public final class StringUtil {
 
     private static final int ONE = 1;
