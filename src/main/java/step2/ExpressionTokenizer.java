@@ -13,12 +13,12 @@ public final class ExpressionTokenizer {
 
     public final static String[] tokenizeByEmptyString(final String expression) throws IllegalArgumentException {
         if (expression == null || expression.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("수식을 입력해야 합니다.");
         }
 
         final String[] tokenizedExpression = expression.split(" ");
-        if(!hasProperOperators(tokenizedExpression)) {
-            throw new IllegalArgumentException();
+        if (!hasProperOperators(tokenizedExpression)) {
+            throw new IllegalArgumentException("연산자는 +,-,*,/만 가능합니다.");
         }
 
         return tokenizedExpression;
