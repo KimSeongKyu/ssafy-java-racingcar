@@ -3,10 +3,12 @@ package step2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class StringCalculatorTest {
 
@@ -118,5 +120,20 @@ class StringCalculatorTest {
 
         // then
         assertThat(sum).isEqualTo(expectedSum);
+    }
+
+    @DisplayName(value = "0으로 나눴을 때에 Arithmetic Exception이 발생하는 나눗셈 테스트")
+    @ParameterizedTest(name = "{index}. 피연산자: {0}")
+    @ValueSource(strings = {"0", "10", "-10", "10.5", "-10.5"})
+    void divideByZeroThrowsArithmeticExceptionTest(String leftOperandString) {
+        // given
+        BigDecimal leftOperand = new BigDecimal(leftOperandString);
+        BigDecimal zero = new BigDecimal("0");
+
+        // then
+        assertThatExceptionOfType(ArithmeticException.class).isThrownBy(() -> {
+            // when
+            BigDecimal quotient = StringCalculator.divide(leftOperand, zero);
+        });
     }
 }
