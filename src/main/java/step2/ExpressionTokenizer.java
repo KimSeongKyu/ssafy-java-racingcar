@@ -15,7 +15,13 @@ public final class ExpressionTokenizer {
         if (expression == null || expression.isEmpty()) {
             throw new IllegalArgumentException();
         }
-        return expression.split(" ");
+
+        final String[] tokenizedExpression = expression.split(" ");
+        if(!hasProperOperators(tokenizedExpression)) {
+            throw new IllegalArgumentException();
+        }
+
+        return tokenizedExpression;
     }
 
     public final static boolean hasProperOperators(final String[] tokenizedExpression) {
