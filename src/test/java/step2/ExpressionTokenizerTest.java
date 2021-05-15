@@ -5,7 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -18,6 +17,13 @@ class ExpressionTokenizerTest {
         return Stream.of(
                 Arguments.of("1 + 2 - 3 * 4 / 5",
                         new String[]{"1", "+", "2", "-", "3", "*", "4", "/", "5"})
+        );
+    }
+
+    static Stream<Arguments> provideTokenizedExpressionForHasRightOperatorsTest() {
+        return Stream.of(
+                Arguments.of(new String[]{"1", "+", "2", "-", "3", "*", "4", "/", "5"}, true),
+                Arguments.of(new String[]{"1", "&", "2"}, false)
         );
     }
 
@@ -43,15 +49,14 @@ class ExpressionTokenizerTest {
         assertThat(tokenizedExpression).containsExactly(expectedTokenizedExpression);
     }
 
-    @DisplayName(value="토큰화된 문자열 배열이 사칙연산자(+,-,*,/)만 갖고 있는지 확인하는 테스트")
-    @ParameterizedTest(name = "{index}. 토큰화된 문자열 배열: {0}")
-    @ValueSource(strings = {"1", "+", "2", "-", "3", "*", "4", "/", "5"})
-    void hasRightOperatorsTest(String[] tokenizedExpression) {
+    @DisplayName(value = "토큰화된 수식이 사칙연산자(+,-,*,/)만 갖고 있는지 확인하는 테스트")
+    @ParameterizedTest(name = "{index}. 토큰화된 수식: {0}")
+    @MethodSource(value = "provideTokenizedExpressionForHasRightOperatorsTest")
+    void hasRightOperatorsTest(String[] tokenizedExpression, boolean expectedResult) {
         // when
         boolean hasRightOperators = ExpressionTokenizer.hasRightOperators(tokenizedExpression);
 
         // then
-        assertThat(hasRightOperators).isTrue();
-
+        assertThat(hasRightOperators).isEqualTo(expectedResult);
     }
 }
