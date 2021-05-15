@@ -8,9 +8,17 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class StringUtilTest {
+
+    static Stream<Arguments> provideStringsForSplitCommaTest() {
+        return Stream.of(
+                Arguments.of("1,2", new String[]{"1", "2"}),
+                Arguments.of("1", new String[]{"1"})
+        );
+    }
 
     @DisplayName("주어진 문자열을 ','로 분리하는 테스트")
     @ParameterizedTest(name = "문자열 ''{0}''을 ','로 분리하는 테스트")
@@ -18,16 +26,9 @@ class StringUtilTest {
     void splitByCommaTest(String sentence, String... expectedSentence) {
         // when
         String[] splitSentence = StringUtil.splitByComma(sentence);
-;
+        ;
         // then
         assertThat(splitSentence).containsExactly(expectedSentence);
-    }
-
-    static Stream<Arguments> provideStringsForSplitCommaTest() {
-        return Stream.of(
-                Arguments.of("1,2", new String[]{"1","2"}),
-                Arguments.of("1", new String[]{"1"})
-        );
     }
 
     @DisplayName("문자열 '(1,2)'의 '()'를 제거하는 테스트")
@@ -57,14 +58,19 @@ class StringUtilTest {
 
         // then
         assertThat(character).isEqualTo(expectedCharacter);
+    }
 
+    @DisplayName("문자열 'abc' 외에 있는 특정 위치의 문자를 가져올 때 StringIndexOutOfBounds Exception이 발생하는 테스트")
+    @Test
+    void getCharacterOutOfIndexBoundsTest() {
         // given
-        final int indexOutOfSentence = sentence.length() + 1;
+        String sentence = "abc";
+        int index = sentence.length() + 1;
 
         // then
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> {
             // when
-            StringUtil.getCharacterAtIndex(indexOutOfSentence, sentence);
+            char character = StringUtil.getCharacterAtIndex(index, sentence);
         });
     }
 }
