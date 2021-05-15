@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -40,5 +41,17 @@ class ExpressionTokenizerTest {
 
         // then
         assertThat(tokenizedExpression).containsExactly(expectedTokenizedExpression);
+    }
+
+    @DisplayName(value="토큰화된 문자열 배열이 사칙연산자(+,-,*,/)만 갖고 있는지 확인하는 테스트")
+    @ParameterizedTest(name = "{index}. 토큰화된 문자열 배열: {0}")
+    @ValueSource(strings = {"1", "+", "2", "-", "3", "*", "4", "/", "5"})
+    void hasRightOperatorsTest(String[] tokenizedExpression) {
+        // when
+        boolean hasRightOperators = ExpressionTokenizer.hasRightOperators(tokenizedExpression);
+
+        // then
+        assertThat(hasRightOperators).isTrue();
+
     }
 }
