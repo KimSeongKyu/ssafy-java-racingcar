@@ -18,11 +18,16 @@ public final class ExpressionTokenizer {
         return expression.split(" ");
     }
 
-    public final static boolean hasRightOperators(final String[] tokenizedExpression) {
-        final List<String> tokenizedExpressionList = Arrays.asList(tokenizedExpression);
-
-        return tokenizedExpressionList.stream()
-                .filter(operator -> tokenizedExpressionList.indexOf(operator) % 2 == 1)
+    public final static boolean hasProperOperators(final String[] tokenizedExpression) {
+        return Arrays.stream(tokenizedExpression)
+                .filter(operator -> isOperator(tokenizedExpression, operator))
                 .anyMatch(operator -> OPERATORS.contains(operator));
+    }
+
+    private final static boolean isOperator(String[] tokenizedExpression, String operator) {
+        if (Arrays.asList(tokenizedExpression).indexOf(operator) % 2 == 1) {
+            return true;
+        }
+        return false;
     }
 }
