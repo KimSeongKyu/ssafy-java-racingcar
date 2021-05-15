@@ -1,10 +1,12 @@
 package step2;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -58,5 +60,18 @@ class ExpressionTokenizerTest {
 
         // then
         assertThat(hasProperOperators).isEqualTo(expectedResult);
+    }
+
+    @DisplayName(value = "주어진 수식이 올바르지 않은 사칙연산자를 갖는 경우 IllegalArgument Exception이 발생하는 테스트")
+    @Test
+    void tokenizeExpressionHasNonProperOperatorsTest() {
+        // given
+        String expression = "1 % 2 & 3";
+
+        // then
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+            // when
+            ExpressionTokenizer.tokenizeByEmptyString(expression);
+        });
     }
 }
