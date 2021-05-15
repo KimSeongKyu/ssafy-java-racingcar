@@ -20,7 +20,7 @@ class ExpressionTokenizerTest {
         );
     }
 
-    static Stream<Arguments> provideTokenizedExpressionForHasRightOperatorsTest() {
+    static Stream<Arguments> provideTokenizedExpressionForHasProperOperatorsTest() {
         return Stream.of(
                 Arguments.of(new String[]{"1", "+", "2", "-", "3", "*", "4", "/", "5"}, true),
                 Arguments.of(new String[]{"1", "&", "2"}, false)
@@ -51,12 +51,12 @@ class ExpressionTokenizerTest {
 
     @DisplayName(value = "토큰화된 수식이 사칙연산자(+,-,*,/)만 갖고 있는지 확인하는 테스트")
     @ParameterizedTest(name = "{index}. 토큰화된 수식: {0}")
-    @MethodSource(value = "provideTokenizedExpressionForHasRightOperatorsTest")
-    void hasRightOperatorsTest(String[] tokenizedExpression, boolean expectedResult) {
+    @MethodSource(value = "provideTokenizedExpressionForHasProperOperatorsTest")
+    void hasProperOperatorsTest(String[] tokenizedExpression, boolean expectedResult) {
         // when
-        boolean hasRightOperators = ExpressionTokenizer.hasRightOperators(tokenizedExpression);
+        boolean hasProperOperators = ExpressionTokenizer.hasProperOperators(tokenizedExpression);
 
         // then
-        assertThat(hasRightOperators).isEqualTo(expectedResult);
+        assertThat(hasProperOperators).isEqualTo(expectedResult);
     }
 }
