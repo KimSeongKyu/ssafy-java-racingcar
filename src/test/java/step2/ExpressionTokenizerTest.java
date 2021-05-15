@@ -27,16 +27,16 @@ class ExpressionTokenizerTest {
         // then
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             // when
-            String[] tokenizedExpression = ExpressionTokenizer.tokenize(expression);
+            String[] tokenizedExpression = ExpressionTokenizer.tokenizeByEmptyString(expression);
         });
     }
 
     @DisplayName(value = "주어진 문자열을 공백으로 토큰화하는 테스트")
     @ParameterizedTest(name = "{index}. 입력 문자열: \"{0}\" 토큰화된 문자열: {1}")
     @MethodSource(value = "provideExpressionForTokenizeTest")
-    void tokenizeTest(String expression, String[] expectedTokenizedExpression) {
+    void tokenizeByEmptyStringTest(String expression, String[] expectedTokenizedExpression) {
         // when
-        String[] tokenizedExpression = ExpressionTokenizer.tokenize(expression);
+        String[] tokenizedExpression = ExpressionTokenizer.tokenizeByEmptyString(expression);
 
         // then
         assertThat(tokenizedExpression).containsExactly(expectedTokenizedExpression);
