@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
@@ -14,13 +13,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class ExpressionTokenizerTest {
-
-    static Stream<Arguments> provideExpressionForTokenizeTest() {
-        return Stream.of(
-                Arguments.of("1 + 2 - 3 * 4 / 5",
-                        new String[]{"1", "+", "2", "-", "3", "*", "4", "/", "5"})
-        );
-    }
 
     static Stream<Arguments> provideTokenizedExpressionForHasProperOperatorsTest() {
         return Stream.of(
@@ -41,9 +33,12 @@ class ExpressionTokenizerTest {
     }
 
     @DisplayName(value = "주어진 문자열을 공백으로 토큰화하는 테스트")
-    @ParameterizedTest(name = "{index}. 입력 문자열: \"{0}\" 토큰화된 문자열: {1}")
-    @MethodSource(value = "provideExpressionForTokenizeTest")
-    void tokenizeByEmptyStringTest(String expression, String[] expectedTokenizedExpression) {
+    @Test
+    void tokenizeByEmptyStringTest() {
+        // given
+        String expression = "1 + 2 - 3 * 4 / 5";
+        String[] expectedTokenizedExpression = new String[]{"1", "+", "2", "-", "3", "*", "4", "/", "5"};
+
         // when
         String[] tokenizedExpression = ExpressionTokenizer.tokenizeByEmptyString(expression);
 
