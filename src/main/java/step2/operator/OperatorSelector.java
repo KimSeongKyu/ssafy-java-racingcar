@@ -1,4 +1,4 @@
-package step2;
+package step2.operator;
 
 public final class OperatorSelector {
 

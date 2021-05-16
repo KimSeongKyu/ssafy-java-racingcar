@@ -1,4 +1,4 @@
-package step2;
+package step2.operator;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package step2;
+package step2.operator;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
