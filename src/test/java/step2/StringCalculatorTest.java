@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.math.BigDecimal;
@@ -132,9 +131,8 @@ class StringCalculatorTest {
         BigDecimal leftOperand = new BigDecimal(leftOperandString);
         BigDecimal zero = new BigDecimal("0");
 
-        // then
+        // when and then
         assertThatExceptionOfType(ArithmeticException.class).isThrownBy(() -> {
-            // when
             BigDecimal quotient = StringCalculator.divide(leftOperand, zero);
         });
     }

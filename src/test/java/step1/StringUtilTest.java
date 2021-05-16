@@ -26,7 +26,7 @@ class StringUtilTest {
     void splitByCommaTest(String sentence, String... expectedSentence) {
         // when
         String[] splitSentence = StringUtil.splitByComma(sentence);
-        ;
+
         // then
         assertThat(splitSentence).containsExactly(expectedSentence);
     }
@@ -67,9 +67,8 @@ class StringUtilTest {
         String sentence = "abc";
         int index = sentence.length() + 1;
 
-        // then
+        // when and then
         assertThatExceptionOfType(StringIndexOutOfBoundsException.class).isThrownBy(() -> {
-            // when
             char character = StringUtil.getCharacterAtIndex(index, sentence);
         });
     }
