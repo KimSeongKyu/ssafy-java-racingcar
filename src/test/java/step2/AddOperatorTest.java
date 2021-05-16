@@ -1,5 +1,6 @@
 package step2;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,6 +10,13 @@ import java.math.BigDecimal;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class AddOperatorTest {
+
+    private static Operator operator;
+
+    @BeforeAll
+    static void setUp() {
+        operator = new AddOperator();
+    }
 
     @DisplayName(value = "두 수에 대한 덧셈 테스트")
     @ParameterizedTest(name = "{index}. 피연산자: [{0},{1}] 결과: [{2}]")
@@ -31,7 +39,7 @@ class AddOperatorTest {
         BigDecimal expectedSum = new BigDecimal(expectedSumString);
 
         // when
-        BigDecimal sum = AddOperator.operate(leftOperand, rightOperand);
+        BigDecimal sum = operator.operate(leftOperand, rightOperand);
 
         // then
         assertThat(sum).isEqualTo(expectedSum);
