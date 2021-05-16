@@ -3,6 +3,7 @@ package step2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class ExpressionTokenizer {
@@ -12,16 +13,20 @@ public final class ExpressionTokenizer {
     private ExpressionTokenizer() {
     }
 
-    public final static String[] tokenizeByEmptyString(final String expression) throws IllegalArgumentException {
-        if (expression == null || expression.isEmpty()) {
-            throw new IllegalArgumentException("수식을 입력해야 합니다.");
-        }
+    public final static List<String> tokenizeByEmptyString(final String expression) {
+        validateEmptyString(expression);
 
-        final String[] tokenizedExpression = expression.split(" ");
-        final List<String> operatorsInExpression = getOperatorsInExpression(Arrays.asList(tokenizedExpression));
+        final List<String> tokenizedExpression = Arrays.asList(expression.split(" "));
+        final List<String> operatorsInExpression = getOperatorsInExpression(tokenizedExpression);
         validateProperOperators(operatorsInExpression);
 
         return tokenizedExpression;
+    }
+
+    private final static void validateEmptyString(final String expression) {
+        if (Objects.isNull(expression) || expression.isEmpty()) {
+            throw new IllegalArgumentException("수식을 입력해야 합니다.");
+        }
     }
 
     public final static void validateProperOperators(final List<String> operatorsInExpression) {
