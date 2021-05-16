@@ -60,16 +60,4 @@ class ExpressionTokenizerTest {
         });
 
     }
-
-    @DisplayName(value = "주어진 수식이 올바르지 않은 사칙연산자를 갖는 경우 IllegalArgument Exception이 발생하는 테스트")
-    @Test
-    void tokenizeExpressionHasNonProperOperatorsTest() {
-        // given
-        String expression = "1 % 2 & 3";
-
-        // when and then
-        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            ExpressionTokenizer.tokenizeByEmptyString(expression);
-        });
-    }
 }
