@@ -4,9 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -25,9 +27,8 @@ class ExpressionTokenizerTest {
     @ParameterizedTest(name = "{index}. 입력 문자열: {0}")
     @NullAndEmptySource
     void tokenizeNullAndEmptyStringTest(String expression) {
-        // then
+        // when and then
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            // when
             String[] tokenizedExpression = ExpressionTokenizer.tokenizeByEmptyString(expression);
         });
     }
@@ -46,15 +47,18 @@ class ExpressionTokenizerTest {
         assertThat(tokenizedExpression).containsExactly(expectedTokenizedExpression);
     }
 
-    @DisplayName(value = "토큰화된 수식이 사칙연산자(+,-,*,/)만 갖고 있는지 확인하는 테스트")
-    @ParameterizedTest(name = "{index}. 토큰화된 수식: {0}")
-    @MethodSource(value = "provideTokenizedExpressionForHasProperOperatorsTest")
-    void hasProperOperatorsTest(String[] tokenizedExpression, boolean expectedResult) {
-        // when
-        boolean hasProperOperators = ExpressionTokenizer.hasProperOperators(tokenizedExpression);
+    @DisplayName(value = "수식 안의 연산자가 사칙연산자(+,-,*,/)를 제외한 연산자인 경우 " +
+            "IllegalArgument Exception이 발생하는 테스트")
+    @Test
+    void validateProperOperatorsTest() {
+        // given
+        List<String> operators = new ArrayList<>(Arrays.asList("(", "%", ")", "="));
 
-        // then
-        assertThat(hasProperOperators).isEqualTo(expectedResult);
+        // when and then
+        assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
+           ExpressionTokenizer.validateProperOperators(operators);
+        });
+
     }
 
     @DisplayName(value = "주어진 수식이 올바르지 않은 사칙연산자를 갖는 경우 IllegalArgument Exception이 발생하는 테스트")
@@ -63,9 +67,8 @@ class ExpressionTokenizerTest {
         // given
         String expression = "1 % 2 & 3";
 
-        // then
+        // when and then
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            // when
             ExpressionTokenizer.tokenizeByEmptyString(expression);
         });
     }
