@@ -1,5 +1,7 @@
 package step2.operator;
 
+import java.util.Optional;
+
 public final class OperatorSelector {
 
     private final static String ADD = "+";
@@ -10,19 +12,19 @@ public final class OperatorSelector {
     private OperatorSelector() {
     }
 
-    public final static Operator selectOperator(final String operatorString) {
+    public final static Optional<Operator> selectOperator(final String operatorString) {
         if (operatorString.equals(ADD)) {
-            return new AddOperator();
+            return Optional.of(new AddOperator());
         }
         if (operatorString.equals(SUBTRACT)) {
-            return new SubtractOperator();
+            return Optional.of(new SubtractOperator());
         }
         if (operatorString.equals(MULTIPLY)) {
-            return new MultiplyOperator();
+            return Optional.of(new MultiplyOperator());
         }
         if (operatorString.equals(DIVIDE)) {
-            return new DivideOperator();
+            return Optional.of(new DivideOperator());
         }
-        return null;
+        return Optional.empty();
     }
 }

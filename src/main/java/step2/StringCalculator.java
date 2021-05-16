@@ -6,6 +6,7 @@ import step2.operator.OperatorSelector;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 public final class StringCalculator {
 
@@ -15,7 +16,7 @@ public final class StringCalculator {
     private final static int DIFFERENCE_BETWEEN_OPERATORS_INDEX = 2;
     private final static int DIFFERENCE_BETWEEN_OPERANDS_INDEX = 2;
 
-    private static Operator operator;
+    private static Optional<Operator> operator;
 
     private StringCalculator() {
     }
@@ -32,7 +33,8 @@ public final class StringCalculator {
             final BigDecimal operand = new BigDecimal(tokenizedExpression.get(operandIndex));
 
             operator = OperatorSelector.selectOperator(operatorString);
-            result = operator.operate(result, operand);
+
+            result = operator.get().operate(result, operand);
         }
 
         return result;
