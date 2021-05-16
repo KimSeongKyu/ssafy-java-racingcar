@@ -17,17 +17,15 @@ public final class ExpressionTokenizer {
         }
 
         final String[] tokenizedExpression = expression.split(" ");
-        if (!hasProperOperators(tokenizedExpression)) {
-            throw new IllegalArgumentException("연산자는 +,-,*,/만 가능합니다.");
-        }
+
 
         return tokenizedExpression;
     }
 
-    public final static boolean hasProperOperators(final String[] tokenizedExpression) {
-        return Arrays.stream(tokenizedExpression)
-                .filter(operator -> isOperator(tokenizedExpression, operator))
-                .anyMatch(operator -> OPERATORS.contains(operator));
+    public final static void validateProperOperators(final List<String> operatorsInExpression) {
+        if(operatorsInExpression.stream().anyMatch(operator -> !OPERATORS.contains(operator))) {
+            throw new IllegalArgumentException("연산자는 +,-,*,/만 가능합니다.");
+        }
     }
 
     private final static boolean isOperator(final String[] tokenizedExpression, final String operator) {
