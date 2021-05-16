@@ -30,7 +30,7 @@ public final class ExpressionTokenizer {
                 .anyMatch(operator -> OPERATORS.contains(operator));
     }
 
-    private final static boolean isOperator(String[] tokenizedExpression, String operator) {
+    private final static boolean isOperator(final String[] tokenizedExpression, final String operator) {
         if (Arrays.asList(tokenizedExpression).indexOf(operator) % 2 == 1) {
             return true;
         }
