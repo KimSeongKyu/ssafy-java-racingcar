@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 public final class ExpressionTokenizer {
 
     private final static List<String> OPERATORS = new ArrayList<>(Arrays.asList("+", "-", "*", "/"));
+    private final static int CRITERION_FOR_EVEN_NUMBER = 2;
+    private final static int REMAINDER = 1;
 
     private ExpressionTokenizer() {
     }
@@ -37,7 +39,11 @@ public final class ExpressionTokenizer {
 
     private final static List<String> getOperatorsInExpression(final List<String> tokenizedExpression) {
         return tokenizedExpression.stream()
-                .filter(operator -> tokenizedExpression.indexOf(operator) % 2 == 1)
+                .filter(element -> isOperator(element, tokenizedExpression))
                 .collect(Collectors.toList());
+    }
+
+    private final static boolean isOperator(final String element, final List<String> tokenizedExpression) {
+        return tokenizedExpression.indexOf(element) % CRITERION_FOR_EVEN_NUMBER == REMAINDER;
     }
 }
