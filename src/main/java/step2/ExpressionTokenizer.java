@@ -3,6 +3,7 @@ package step2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class ExpressionTokenizer {
 
@@ -17,21 +18,21 @@ public final class ExpressionTokenizer {
         }
 
         final String[] tokenizedExpression = expression.split(" ");
-
+        final List<String> operatorsInExpression = getOperatorsInExpression(Arrays.asList(tokenizedExpression));
+        validateProperOperators(operatorsInExpression);
 
         return tokenizedExpression;
     }
 
     public final static void validateProperOperators(final List<String> operatorsInExpression) {
-        if(operatorsInExpression.stream().anyMatch(operator -> !OPERATORS.contains(operator))) {
+        if (operatorsInExpression.stream().anyMatch(operator -> !OPERATORS.contains(operator))) {
             throw new IllegalArgumentException("연산자는 +,-,*,/만 가능합니다.");
         }
     }
 
-    private final static boolean isOperator(final String[] tokenizedExpression, final String operator) {
-        if (Arrays.asList(tokenizedExpression).indexOf(operator) % 2 == 1) {
-            return true;
-        }
-        return false;
+    private final static List<String> getOperatorsInExpression(final List<String> tokenizedExpression) {
+        return tokenizedExpression.stream()
+                .filter(operator -> tokenizedExpression.indexOf(operator) % 2 == 1)
+                .collect(Collectors.toList());
     }
 }
