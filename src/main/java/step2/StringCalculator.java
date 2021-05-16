@@ -1,10 +1,12 @@
 package step2;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public final class StringCalculator {
 
-    private StringCalculator(){}
+    private StringCalculator() {
+    }
 
     public final static BigDecimal add(final BigDecimal leftOperand, final BigDecimal rightOperand) {
         return leftOperand.add(rightOperand);
@@ -23,13 +25,13 @@ public final class StringCalculator {
     }
 
     public final static BigDecimal calculate(final String expression) {
-        final String[] tokenizedExpression = ExpressionTokenizer.tokenizeByEmptyString(expression);
+        final List<String> tokenizedExpression = ExpressionTokenizer.tokenizeByEmptyString(expression);
 
-        BigDecimal result = new BigDecimal(tokenizedExpression[0]);
-        for (int operatorIndex = 1, operandIndex = 2; operandIndex < tokenizedExpression.length;
+        BigDecimal result = new BigDecimal(tokenizedExpression.get(0));
+        for (int operatorIndex = 1, operandIndex = 2; operandIndex < tokenizedExpression.size();
              operatorIndex += 2, operandIndex += 2) {
-            final String operator = tokenizedExpression[operatorIndex];
-            final BigDecimal operand = new BigDecimal(tokenizedExpression[operandIndex]);
+            final String operator = tokenizedExpression.get(operatorIndex);
+            final BigDecimal operand = new BigDecimal(tokenizedExpression.get(operandIndex));
 
             switch (operator) {
                 case "+":
