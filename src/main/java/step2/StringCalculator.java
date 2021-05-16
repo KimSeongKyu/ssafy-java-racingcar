@@ -11,10 +11,7 @@ public final class StringCalculator {
     private final static int DIFFERENCE_BETWEEN_OPERATORS_INDEX = 2;
     private final static int DIFFERENCE_BETWEEN_OPERANDS_INDEX = 2;
 
-    private final static String ADD = "+";
-    private final static String SUBTRACT = "-";
-    private final static String MULTIPLY = "*";
-    private final static String DIVIDE = "/";
+    private static Operator operator;
 
     private StringCalculator() {
     }
@@ -27,36 +24,13 @@ public final class StringCalculator {
              operandIndex < tokenizedExpression.size();
              operatorIndex += DIFFERENCE_BETWEEN_OPERATORS_INDEX, operandIndex += DIFFERENCE_BETWEEN_OPERANDS_INDEX) {
 
-            final String operator = tokenizedExpression.get(operatorIndex);
+            final String operatorString = tokenizedExpression.get(operatorIndex);
             final BigDecimal operand = new BigDecimal(tokenizedExpression.get(operandIndex));
 
-            if (operator.equals(ADD)) {
-                result = add(result, operand);
-            } else if (operator.equals(SUBTRACT)) {
-                result = subtract(result, operand);
-            } else if (operator.equals(MULTIPLY)) {
-                result = multiply(result, operand);
-            } else if (operator.equals(DIVIDE)) {
-                result = divide(result, operand);
-            }
+            operator = OperatorSelector.selectOperator(operatorString);
+            result = operator.operate(result, operand);
         }
 
         return result;
-    }
-
-    public final static BigDecimal add(final BigDecimal leftOperand, final BigDecimal rightOperand) {
-        return leftOperand.add(rightOperand);
-    }
-
-    public final static BigDecimal subtract(final BigDecimal leftOperand, final BigDecimal rightOperand) {
-        return leftOperand.subtract(rightOperand);
-    }
-
-    public final static BigDecimal multiply(final BigDecimal leftOperand, final BigDecimal rightOperand) {
-        return leftOperand.multiply(rightOperand);
-    }
-
-    public final static BigDecimal divide(final BigDecimal leftOperand, final BigDecimal rightOperand) {
-        return leftOperand.divide(rightOperand);
     }
 }
