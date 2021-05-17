@@ -1,3 +1,5 @@
+package step1;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -39,13 +41,15 @@ public class SetTest {
     @ParameterizedTest(name = "{index}. Set이 {0}를 원소로 갖는지 확인하는 테스트")
     @ValueSource(ints = {1, 2, 3})
     void containOneTwoThreeTest(int number) {
+        // when and then
         assertThat(numbers.contains(number)).isTrue();
     }
 
     @DisplayName("Set이 입력값을 원소로 가지면 true, 갖지 않으면 false를 반환하는지 확인하는 테스트")
     @ParameterizedTest(name = "{index}. Set이 입력값 {0}에 대해 올바른 결과를 반환하는지 확인하는 테스트")
-    @CsvSource(value = {"0,false","1,true", "2,true", "3,true", "4,false"})
+    @CsvSource(value = {"0,false", "1,true", "2,true", "3,true", "4,false"})
     void containTest(int number, boolean expectedResult) {
+        // when and then
         assertThat(numbers.contains(number)).isEqualTo(expectedResult);
     }
 }
