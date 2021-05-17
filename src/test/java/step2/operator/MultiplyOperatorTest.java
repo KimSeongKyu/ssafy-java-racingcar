@@ -15,7 +15,7 @@ class MultiplyOperatorTest {
 
     @BeforeAll
     static void setUp() {
-        operator = new MultiplyOperator();
+        operator = MultiplyOperator.getInstance();
     }
 
     @DisplayName(value = "두 수에 대한 곱셈 테스트")

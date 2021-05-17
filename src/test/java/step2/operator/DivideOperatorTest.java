@@ -17,7 +17,7 @@ class DivideOperatorTest {
 
     @BeforeAll
     static void setUp() {
-        operator = new DivideOperator();
+        operator = DivideOperator.getInstance();
     }
 
     @DisplayName(value = "두 수에 대한 나눗셈 테스트")

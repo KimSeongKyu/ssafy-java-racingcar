@@ -14,16 +14,16 @@ public final class OperatorSelector {
 
     public final static Optional<Operator> selectOperator(final String operatorString) {
         if (operatorString.equals(ADD)) {
-            return Optional.of(new AddOperator());
+            return Optional.of(AddOperator.getInstance());
         }
         if (operatorString.equals(SUBTRACT)) {
-            return Optional.of(new SubtractOperator());
+            return Optional.of(SubtractOperator.getInstance());
         }
         if (operatorString.equals(MULTIPLY)) {
-            return Optional.of(new MultiplyOperator());
+            return Optional.of(MultiplyOperator.getInstance());
         }
         if (operatorString.equals(DIVIDE)) {
-            return Optional.of(new DivideOperator());
+            return Optional.of(DivideOperator.getInstance());
         }
         return Optional.empty();
     }

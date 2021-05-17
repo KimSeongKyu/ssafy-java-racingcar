@@ -15,7 +15,7 @@ class SubtractOperatorTest {
 
     @BeforeAll
     static void setUp() {
-        operator = new SubtractOperator();
+        operator = SubtractOperator.getInstance();
     }
 
     @DisplayName(value = "두 수에 대한 뺄셈 테스트")
