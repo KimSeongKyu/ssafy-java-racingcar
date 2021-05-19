@@ -1,30 +1,30 @@
 package step2.operator;
 
-import java.util.Optional;
+import java.util.Arrays;
 
-public final class OperatorSelector {
+public enum OperatorSelector {
 
-    private final static String ADD = "+";
-    private final static String SUBTRACT = "-";
-    private final static String MULTIPLY = "*";
-    private final static String DIVIDE = "/";
+    ADDITION("+", AddOperator.getInstance()),
+    SUBTRACTION("-", SubtractOperator.getInstance()),
+    MULTIPLICATION("*", MultiplyOperator.getInstance()),
+    DIVISION("/", DivideOperator.getInstance());
 
-    private OperatorSelector() {
+    private final String operation;
+    private final Operator operator;
+
+    OperatorSelector(final String operation, final Operator operator) {
+        this.operation = operation;
+        this.operator = operator;
     }
 
-    public final static Optional<Operator> selectOperator(final String operatorString) {
-        if (operatorString.equals(ADD)) {
-            return Optional.of(AddOperator.getInstance());
-        }
-        if (operatorString.equals(SUBTRACT)) {
-            return Optional.of(SubtractOperator.getInstance());
-        }
-        if (operatorString.equals(MULTIPLY)) {
-            return Optional.of(MultiplyOperator.getInstance());
-        }
-        if (operatorString.equals(DIVIDE)) {
-            return Optional.of(DivideOperator.getInstance());
-        }
-        return Optional.empty();
+    public final static OperatorSelector select(final String operation) {
+        return Arrays.stream(values())
+                .filter(operationSelector -> operationSelector.operation.equals(operation))
+                .findFirst()
+                .get();
+    }
+
+    public final Operator getOperator() {
+        return operator;
     }
 }
