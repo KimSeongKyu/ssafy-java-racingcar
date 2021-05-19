@@ -1,5 +1,6 @@
 package step3;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -10,6 +11,13 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class MovementDecisionMakerTest {
+
+    private static MovementDecisionMaker movementDecisionMaker;
+
+    @BeforeAll
+    static void setUp() {
+        movementDecisionMaker = MovementDecisionMaker.getInstance();
+    }
 
     static Stream<Arguments> provideConditionsForDecideMovementTest() {
         return Stream.of(
@@ -24,7 +32,7 @@ public class MovementDecisionMakerTest {
     void decideMovementTest(int conditionToMove, boolean expectedResult) {
 
         // when
-        boolean isMovable = MovementDecisionMaker.decideMovement(conditionToMove);
+        boolean isMovable = movementDecisionMaker.decideMovement(conditionToMove);
 
         // then
         assertThat(isMovable).isEqualTo(expectedResult);
