@@ -1,27 +1,40 @@
 package step3;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.mockito.MockedStatic;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mockStatic;
 import static org.mockito.Mockito.when;
 
 public class RacingManagerTest {
 
     private static List<Car> cars;
     private static RacingManager racingManager;
+    private static MockedStatic<MovementConditionProvider> mockMovementConditionProvider;
 
     @BeforeAll
     static void setUp() {
         cars = new ArrayList<>(3);
+        for (int i = 0; i < 3; i++) {
+            cars.add(new Car());
+        }
         racingManager = RacingManager.getInstance();
+        mockMovementConditionProvider = mockStatic(MovementConditionProvider.class);
+    }
+
+    @AfterAll
+    static void unset() {
+        mockMovementConditionProvider.close();
     }
 
     static Stream<Arguments> provideNumberOfRoundsForRaceTest() {
