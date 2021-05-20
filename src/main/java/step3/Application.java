@@ -8,14 +8,15 @@ import java.util.List;
 public class Application {
 
     public static void main(String[] args) {
+        RacingManager racingManager = RacingManager.getInstance();
+
         final int numberOfCars = InputView.inputNumberOfCars();
         List<Car> cars = CarFactory.createCars(numberOfCars);
 
-        RacingManager racingManager = RacingManager.getInstance();
-        final int numberOfPlay = InputView.inputNumberOfPlay();
+        final int numberOfRounds = InputView.inputNumberOfRounds();
 
         OutputView.printResultSentence();
-        for(int round = 1; round <= numberOfPlay; round++) {
+        for(int round = 1; round <= numberOfRounds; round++) {
             racingManager.race(cars);
             OutputView.printCarPositions(cars);
         }

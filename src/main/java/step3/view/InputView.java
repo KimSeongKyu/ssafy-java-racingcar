@@ -14,7 +14,7 @@ public final class InputView {
         return input.nextInt();
     }
 
-    public final static int inputNumberOfPlay() {
+    public final static int inputNumberOfRounds() {
         System.out.println("시도할 횟수는 몇 회 인가요?");
         return input.nextInt();
     }
