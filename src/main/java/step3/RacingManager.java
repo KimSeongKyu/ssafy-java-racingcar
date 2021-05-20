@@ -15,12 +15,11 @@ public final class RacingManager {
         return instance;
     }
 
-    public final void race(final int numberOfRounds, final List<Car> cars) {
-        for (int round = 1; round <= numberOfRounds; round++) {
-            cars.stream()
-                    .forEach(car -> car.move(movementDecisionMaker.decideMovement(
-                            MovementConditionProvider.makeMovementCondition()))
-                    );
-        }
+    public final void race(final List<Car> cars) {
+        cars.stream()
+                .forEach(car -> car.move(movementDecisionMaker.decideMovement(
+                        MovementConditionProvider.makeMovementCondition()))
+                );
+
     }
 }
