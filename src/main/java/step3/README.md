@@ -30,7 +30,7 @@
 
 ### 5. 차량 생성 기능
 
-- RacingManagement 클래스
+- CarFactory 클래스
 - InputView로부터 받은 자동차 대수 만큼의 Car 인스턴스 생성
 
 ---
