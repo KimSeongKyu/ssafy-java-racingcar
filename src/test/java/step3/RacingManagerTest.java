@@ -43,7 +43,7 @@ public class RacingManagerTest {
         String[] expectedCarPositions = new String[]{"----", "----", "----"};
 
         // when
-        when(MovementConditionProvider.makeMovementCondition()).thenReturn(5);
+        //when(MovementConditionProvider.makeMovementCondition()).thenReturn(5);
         for (int round = 1; round <= numberOfRounds; round++) {
             racingManager.race(cars);
         }
