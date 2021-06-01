@@ -1,8 +1,9 @@
-package step3;
+package step3.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.RepetitionInfo;
+import step3.service.MovementConditionProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
