@@ -8,6 +8,9 @@ public final class MovementConditionProvider {
 
     private final static MovementConditionProvider instance = new MovementConditionProvider();
 
+    private MovementConditionProvider() {
+    }
+
     public final static MovementConditionProvider getInstance() {
         return instance;
     }
