@@ -6,9 +6,11 @@ public final class RacingManager {
 
     private final static RacingManager instance = new RacingManager();
     private final MovementDecisionMaker movementDecisionMaker;
+    private final MovementConditionProvider movementConditionProvider;
 
     private RacingManager() {
         movementDecisionMaker = MovementDecisionMaker.getInstance();
+        movementConditionProvider = MovementConditionProvider.getInstance();
     }
 
     public final static RacingManager getInstance() {
@@ -18,7 +20,7 @@ public final class RacingManager {
     public final void race(final List<Car> cars) {
         cars.stream()
                 .forEach(car -> car.move(movementDecisionMaker.decideMovement(
-                        MovementConditionProvider.makeMovementCondition()))
+                        movementConditionProvider.makeMovementCondition()))
                 );
 
     }
