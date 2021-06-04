@@ -1,6 +1,7 @@
 package step3.view;
 
 import step3.domain.Car;
+import step3.domain.Cars;
 
 import java.util.List;
 
@@ -15,8 +16,8 @@ public final class OutputView {
         System.out.println(RESULT_SENTENCE);
     }
 
-    public final static void printCarPositions(final List<Car> cars) {
-        cars.stream()
+    public final static void printCarPositions(final Cars cars) {
+        cars.getCars().stream()
                 .forEachOrdered(car -> System.out.println(car.getPosition()));
         System.out.println();
     }

@@ -2,11 +2,10 @@ package step3;
 
 import step3.domain.Car;
 import step3.domain.CarFactory;
+import step3.domain.Cars;
 import step3.service.RacingManager;
 import step3.view.InputView;
 import step3.view.OutputView;
-
-import java.util.List;
 
 public class Application {
 
@@ -14,7 +13,7 @@ public class Application {
         RacingManager racingManager = RacingManager.getInstance();
 
         final int numberOfCars = InputView.inputNumberOfCars();
-        List<Car> cars = CarFactory.createCars(numberOfCars);
+        Cars cars = new Cars(CarFactory.createCars(numberOfCars));
 
         final int numberOfRounds = InputView.inputNumberOfRounds();
 

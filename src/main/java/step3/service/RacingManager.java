@@ -1,8 +1,6 @@
 package step3.service;
 
-import step3.domain.Car;
-
-import java.util.List;
+import step3.domain.Cars;
 
 public final class RacingManager {
 
@@ -19,8 +17,8 @@ public final class RacingManager {
         return instance;
     }
 
-    public final void race(final List<Car> cars) {
-        cars.stream()
+    public final void race(final Cars cars) {
+        cars.getCars().stream()
                 .forEach(car -> car.move(movementDecisionMaker.decideMovement(
                         movementConditionProvider.makeMovementCondition()))
                 );
