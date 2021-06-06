@@ -2,20 +2,22 @@ package step3.domain;
 
 public final class Car {
 
-    private final StringBuilder position;
+    private final static int START = 1;
+
+    private int position;
 
     public Car() {
-        position = new StringBuilder("-");
+        position = START;
     }
 
     public final void move(final boolean isMovable) {
         if (isMovable) {
-            position.append("-");
+            ++position;
         }
     }
 
-    public String getPosition() {
-        return position.toString();
+    public final int getPosition() {
+        return position;
     }
 }
 
