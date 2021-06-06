@@ -4,7 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.domain.Car;
 
 import java.util.stream.Stream;
 
@@ -14,15 +13,15 @@ public class CarTest {
 
     static Stream<Arguments> provideDecisionForMoveTest() {
         return Stream.of(
-                Arguments.of(true, "--"),
-                Arguments.of(false, "-")
+                Arguments.of(true, "2"),
+                Arguments.of(false, "1")
         );
     }
 
     @DisplayName(value = "이동 가능 여부에 따른 차량 이동 테스트")
     @ParameterizedTest(name = "{index}. 이동 가능 여부: [{0}] 이동 후 차량 위치: [{1}]")
     @MethodSource(value = "provideDecisionForMoveTest")
-    void moveTest(boolean isMovable, String expectedPosition) {
+    void moveTest(boolean isMovable, int expectedPosition) {
         // given
         Car car = new Car();
 

@@ -9,6 +9,7 @@ import step3.domain.Car;
 import step3.domain.Cars;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,15 +49,17 @@ public class RacingManagerTest {
     void raceTest() {
         // given
         int numberOfRounds = 3;
-        String[] expectedCarPositions = new String[]{"----", "----", "----"};
+        int[] expectedCarPositions = new int[]{4, 4, 4};
 
         // when
         for (int round = 1; round <= numberOfRounds; round++) {
             racingManager.race(cars);
         }
-        String[] carPositions = wrappedCars.stream()
+        int[] carPositions = Arrays.stream(wrappedCars.stream()
                 .map(car -> car.getPosition())
-                .toArray(String[]::new);
+                .toArray(Integer[]::new))
+                .mapToInt(i -> i)
+                .toArray();
 
         // then
         assertThat(carPositions).containsExactly(expectedCarPositions);
