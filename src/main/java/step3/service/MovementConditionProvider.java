@@ -6,7 +6,10 @@ public final class MovementConditionProvider {
 
     private final static int BOUND = 10;
 
+    private final Random randomNumberProvider;
+
     private MovementConditionProvider() {
+        randomNumberProvider = new Random();
     }
 
     public final static MovementConditionProvider getInstance() {
@@ -14,9 +17,7 @@ public final class MovementConditionProvider {
     }
 
     public final int makeMovementCondition() {
-        final Random randomNumberProvider = new Random();
-        final int movementCondition = randomNumberProvider.nextInt(BOUND);
-        return movementCondition;
+        return randomNumberProvider.nextInt(BOUND);
     }
 
     private final static class MovementConditionProviderHolder {
