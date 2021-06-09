@@ -1,4 +1,4 @@
-package step3.domain;
+package step3.domain.car;
 
 public final class Car {
 

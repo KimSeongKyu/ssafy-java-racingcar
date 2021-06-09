@@ -5,8 +5,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import step3.domain.Car;
-import step3.domain.Cars;
+import step3.domain.car.Car;
+import step3.domain.car.Cars;
 
 import java.util.ArrayList;
 import java.util.Arrays;

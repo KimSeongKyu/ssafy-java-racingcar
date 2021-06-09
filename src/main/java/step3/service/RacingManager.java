@@ -1,6 +1,6 @@
 package step3.service;
 
-import step3.domain.Cars;
+import step3.domain.car.Cars;
 
 public final class RacingManager {
 
