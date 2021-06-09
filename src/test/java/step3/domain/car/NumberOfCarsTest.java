@@ -22,7 +22,7 @@ public class NumberOfCarsTest {
     void getNumberOfCarsTest() {
         // given and when
         int expectedNumberOfCars = 3;
-        NumberOfCars numberOfCars = new NumberOfCars(expectedNumberOfCars);
+        NumberOfCars numberOfCars = new NumberOfCars(3);
 
         // then
         assertThat(numberOfCars.getNumberOfCars()).isEqualTo(expectedNumberOfCars);
