@@ -2,6 +2,7 @@ package step3;
 
 import step3.domain.car.Cars;
 import step3.domain.car.NumberOfCars;
+import step3.domain.game.NumberOfRounds;
 import step3.service.RacingManager;
 import step3.view.InputView;
 import step3.view.OutputView;
@@ -14,10 +15,10 @@ public class Application {
         final NumberOfCars numberOfCars = new NumberOfCars(InputView.inputNumberOfCars());
         Cars cars = new Cars(numberOfCars);
 
-        final int numberOfRounds = InputView.inputNumberOfRounds();
+        final NumberOfRounds numberOfRounds = new NumberOfRounds(InputView.inputNumberOfRounds());
 
         OutputView.printResultSentence();
-        for (int round = 1; round <= numberOfRounds; round++) {
+        for (int round = 1; round <= numberOfRounds.getNumberOfRounds(); round++) {
             racingManager.race(cars);
             OutputView.printCarPositions(cars);
         }
