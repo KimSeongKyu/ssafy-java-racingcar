@@ -18,4 +18,8 @@ public final class NumberOfCars {
             throw new NumberOfCarsOutOfBoundException();
         }
     }
+
+    public final int getNumberOfCars() {
+        return numberOfCars;
+    }
 }
