@@ -18,4 +18,8 @@ public final class NumberOfRounds {
             throw new NumberOfRoundsOutOfBoundException();
         }
     }
+
+    public final int getNumberOfRounds() {
+        return numberOfRounds;
+    }
 }
