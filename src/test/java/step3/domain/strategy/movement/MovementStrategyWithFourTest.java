@@ -23,7 +23,7 @@ public class MovementStrategyWithFourTest {
     @MethodSource(value = "provideMovementStrategyNumberForIsMovableTest")
     void isMovableTest(int movementStrategyNumber, boolean expectedResult) {
         // given
-        MovementStrategyWithFour movementStrategyWithFour = new MovementStrategyWithFour();
+        MovementStrategyWithFour movementStrategyWithFour = MovementStrategyWithFour.getInstance();
 
         // when
         boolean isMovable = movementStrategyWithFour.isMovable(movementStrategyNumber);
