@@ -22,4 +22,8 @@ public enum MovementStrategySelector {
                 .findFirst()
                 .orElseThrow(IllegalMovementStrategyException::new);
     }
+
+    public final MovementStrategy getMovementStrategy() {
+        return movementStrategy;
+    }
 }
