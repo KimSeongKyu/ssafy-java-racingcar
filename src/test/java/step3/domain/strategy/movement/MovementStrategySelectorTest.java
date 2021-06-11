@@ -2,8 +2,10 @@ package step3.domain.strategy.movement;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import step3.domain.exception.IllegalMovementStrategyException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class MovementStrategySelectorTest {
 
@@ -18,5 +20,17 @@ public class MovementStrategySelectorTest {
 
         // then
         assertThat(movementStrategySelector).isNotNull();
+    }
+
+    @DisplayName(value = "이동 전략이 올바르지 않을 경우 예외 발생 테스트")
+    @Test
+    void selectIllegalMovementStrategyThrowExceptionTest() {
+        // given
+        int movementStrategyNumber = 5;
+
+        // when and then
+        assertThatExceptionOfType(IllegalMovementStrategyException.class).isThrownBy(() -> {
+            MovementStrategySelector movementStrategySelector = MovementStrategySelector.selectMovementStrategy(movementStrategyNumber);
+        });
     }
 }
