@@ -33,12 +33,12 @@ public class CarTest {
     @MethodSource(value = "provideMovementConditionForMoveTest")
     void moveTest(int movementCondition, int expectedPosition) {
         // given
-        Car car = new Car();
+        Car carBeforeMove = new Car();
 
         // when
-        car.move(movementCondition, movementStrategy);
+        Car carAfterMove = carBeforeMove.move(movementCondition, movementStrategy);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(expectedPosition);
+        assertThat(carAfterMove.getPosition()).isEqualTo(expectedPosition);
     }
 }
