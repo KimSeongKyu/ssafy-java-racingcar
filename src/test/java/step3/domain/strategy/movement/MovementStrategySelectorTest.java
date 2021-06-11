@@ -14,9 +14,9 @@ public class MovementStrategySelectorTest {
         int movementStrategyNumber = 4;
 
         // when
-        MovementStrategy movementStrategy = MovementStrategySelector.selectMovementStrategy(movementStrategyNumber);
+        MovementStrategySelector movementStrategySelector = MovementStrategySelector.selectMovementStrategy(movementStrategyNumber);
 
         // then
-        assertThat(movementStrategy).isInstanceOf(MovementStrategyWithFour.class);
+        assertThat(movementStrategySelector).isNotNull();
     }
 }
