@@ -3,7 +3,7 @@ package step3;
 import step3.domain.car.Cars;
 import step3.domain.car.NumberOfCars;
 import step3.domain.game.NumberOfRounds;
-import step3.domain.movement.MovementConditionProvider;
+import step3.domain.movement.MovementConditionRandomGenerator;
 import step3.domain.strategy.movement.MovementStrategy;
 import step3.domain.strategy.movement.MovementStrategySelector;
 import step3.view.InputView;
@@ -27,7 +27,8 @@ public class Application {
         for (int round = START_ROUND; round <= numberOfRounds.getNumberOfRounds(); round++) {
             cars.getCars()
                     .stream()
-                    .forEachOrdered(car -> car.move(MovementConditionProvider.makeMovementCondition(), movementStrategy));
+                    .forEachOrdered(car -> car.move(MovementConditionRandomGenerator.generateRandomMovementCondition(),
+                            movementStrategy));
             OutputView.printCarPositions(cars);
         }
     }
