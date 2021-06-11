@@ -1,4 +1,4 @@
-package step3.domain.exception;
+package step3.exception;
 
 public class NumberOfRoundsOutOfBoundException extends RuntimeException {
 }

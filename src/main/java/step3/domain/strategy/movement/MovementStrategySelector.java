@@ -1,6 +1,6 @@
 package step3.domain.strategy.movement;
 
-import step3.domain.exception.IllegalMovementStrategyException;
+import step3.exception.IllegalMovementStrategyException;
 
 import java.util.Arrays;
 

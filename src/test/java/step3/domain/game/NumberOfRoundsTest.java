@@ -2,7 +2,7 @@ package step3.domain.game;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step3.domain.exception.NumberOfRoundsOutOfBoundException;
+import step3.exception.NumberOfRoundsOutOfBoundException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;

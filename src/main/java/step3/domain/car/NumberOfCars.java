@@ -1,6 +1,6 @@
 package step3.domain.car;
 
-import step3.domain.exception.NumberOfCarsOutOfBoundException;
+import step3.exception.NumberOfCarsOutOfBoundException;
 
 public final class NumberOfCars {
 

@@ -1,6 +1,6 @@
 package step3.domain.game;
 
-import step3.domain.exception.NumberOfRoundsOutOfBoundException;
+import step3.exception.NumberOfRoundsOutOfBoundException;
 
 public final class NumberOfRounds {
 
