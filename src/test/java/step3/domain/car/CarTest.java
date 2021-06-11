@@ -18,7 +18,7 @@ public class CarTest {
 
     @BeforeAll
     static void setUp() {
-        movementStrategy = MovementStrategySelector.selectMovementStrategy(4).getMovementStrategy();
+        movementStrategy = MovementStrategySelector.getInstance(4).getMovementStrategy();
     }
 
     static Stream<Arguments> provideDecisionForMoveTest() {

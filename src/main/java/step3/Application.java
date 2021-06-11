@@ -20,7 +20,7 @@ public class Application {
 
         final NumberOfRounds numberOfRounds = new NumberOfRounds(InputView.inputNumberOfRounds());
 
-        MovementStrategy movementStrategy = MovementStrategySelector.selectMovementStrategy(MOVEMENT_STRATEGY_NUMBER)
+        MovementStrategy movementStrategy = MovementStrategySelector.getInstance(MOVEMENT_STRATEGY_NUMBER)
                 .getMovementStrategy();
 
         OutputView.printResultSentence();

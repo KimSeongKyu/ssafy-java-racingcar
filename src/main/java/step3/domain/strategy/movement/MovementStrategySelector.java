@@ -16,7 +16,7 @@ public enum MovementStrategySelector {
         this.movementStrategy = movementStrategy;
     }
 
-    public final static MovementStrategySelector selectMovementStrategy(final int movementStrategyNumber) {
+    public final static MovementStrategySelector getInstance(final int movementStrategyNumber) {
         return Arrays.stream(values())
                 .filter(movementStrategySelector -> movementStrategySelector.movementStrategyNumber == movementStrategyNumber)
                 .findFirst()

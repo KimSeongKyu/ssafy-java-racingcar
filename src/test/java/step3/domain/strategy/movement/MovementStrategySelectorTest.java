@@ -16,7 +16,7 @@ public class MovementStrategySelectorTest {
         int movementStrategyNumber = 4;
 
         // when
-        MovementStrategySelector movementStrategySelector = MovementStrategySelector.selectMovementStrategy(movementStrategyNumber);
+        MovementStrategySelector movementStrategySelector = MovementStrategySelector.getInstance(movementStrategyNumber);
 
         // then
         assertThat(movementStrategySelector).isNotNull();
@@ -30,7 +30,7 @@ public class MovementStrategySelectorTest {
 
         // when and then
         assertThatExceptionOfType(IllegalMovementStrategyException.class).isThrownBy(() -> {
-            MovementStrategySelector movementStrategySelector = MovementStrategySelector.selectMovementStrategy(movementStrategyNumber);
+            MovementStrategySelector movementStrategySelector = MovementStrategySelector.getInstance(movementStrategyNumber);
         });
     }
 
@@ -39,7 +39,7 @@ public class MovementStrategySelectorTest {
     void getMovementStrategyTest() {
         // given
         int movementStrategyNumber = 4;
-        MovementStrategySelector movementStrategySelector = MovementStrategySelector.selectMovementStrategy(movementStrategyNumber);
+        MovementStrategySelector movementStrategySelector = MovementStrategySelector.getInstance(movementStrategyNumber);
 
         // when
         MovementStrategy movementStrategy = movementStrategySelector.getMovementStrategy();
