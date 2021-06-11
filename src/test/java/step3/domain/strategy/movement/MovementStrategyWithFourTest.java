@@ -13,8 +13,8 @@ public class MovementStrategyWithFourTest {
 
     static Stream<Arguments> provideMovementStrategyNumberForIsMovableTest() {
         return Stream.of(
-                Arguments.of(4, true),
-                Arguments.of(10, false)
+                Arguments.of(3, false),
+                Arguments.of(10, true)
         );
     }
 
