@@ -1,4 +1,4 @@
-package step3.service;
+package step3.domain.movement;
 
 import java.util.Random;
 

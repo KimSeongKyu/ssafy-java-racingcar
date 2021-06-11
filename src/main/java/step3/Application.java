@@ -3,9 +3,9 @@ package step3;
 import step3.domain.car.Cars;
 import step3.domain.car.NumberOfCars;
 import step3.domain.game.NumberOfRounds;
+import step3.domain.movement.MovementConditionProvider;
 import step3.domain.strategy.movement.MovementStrategy;
 import step3.domain.strategy.movement.MovementStrategySelector;
-import step3.service.MovementConditionProvider;
 import step3.view.InputView;
 import step3.view.OutputView;
 
