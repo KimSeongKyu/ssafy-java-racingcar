@@ -21,7 +21,7 @@ public enum OperatorSelector {
         return Arrays.stream(values())
                 .filter(operationSelector -> operationSelector.operation.equals(operation))
                 .findFirst()
-                .get();
+                .orElseThrow(() -> new IllegalArgumentException("연산자는 +,-,*,/만 가능합니다."));
     }
 
     public final Operator getOperator() {
