@@ -1,4 +1,4 @@
-package step3.domain.game;
+package step3.domain.round;
 
 import step3.exception.NumberOfRoundsOutOfBoundException;
 

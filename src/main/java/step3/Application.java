@@ -2,7 +2,7 @@ package step3;
 
 import step3.domain.car.Cars;
 import step3.domain.car.NumberOfCars;
-import step3.domain.game.NumberOfRounds;
+import step3.domain.round.NumberOfRounds;
 import step3.domain.movement.MovementConditionRandomGenerator;
 import step3.view.InputView;
 import step3.view.OutputView;

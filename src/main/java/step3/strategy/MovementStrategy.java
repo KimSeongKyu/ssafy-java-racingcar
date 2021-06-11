@@ -1,4 +1,4 @@
-package step3.domain.strategy;
+package step3.strategy;
 
 @FunctionalInterface
 public interface MovementStrategy {

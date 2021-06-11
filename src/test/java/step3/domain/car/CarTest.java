@@ -1,11 +1,9 @@
 package step3.domain.car;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step3.domain.strategy.MovementStrategy;
 
 import java.util.stream.Stream;
 
