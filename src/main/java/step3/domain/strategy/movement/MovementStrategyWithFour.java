@@ -15,7 +15,7 @@ public final class MovementStrategyWithFour implements MovementStrategy {
 
     @Override
     public final boolean isMovable(final int movementStrategyNumber) {
-        if (movementStrategyNumber == CRITERION_TO_MOVE) {
+        if (movementStrategyNumber >= CRITERION_TO_MOVE) {
             return IS_MOVABLE;
         }
         return IS_NOT_MOVABLE;
