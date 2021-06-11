@@ -22,9 +22,12 @@ public class NumberOfRoundsTest {
     @DisplayName("라운드 수가 음수인 경우 예외를 발생시키는 테스트")
     @Test
     void constructWithNegativeNumberOfRoundsThrowExceptionTest() {
-        // given when then
+        // given
+        int negativeNumberOfRounds = -1;
+
+        // when and then
         assertThatExceptionOfType(NumberOfRoundsOutOfBoundException.class).isThrownBy(() -> {
-            new NumberOfRounds(-1);
+            new NumberOfRounds(negativeNumberOfRounds);
         });
     }
 

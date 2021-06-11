@@ -10,7 +10,11 @@ class MovementConditionRandomGeneratorTest {
 
     @DisplayName("0~9 사이의 난수 생성 테스트")
     @RepeatedTest(value = 10, name = "반복 횟수: {currentRepetition}/{totalRepetitions}")
-    void makeMovementCondition(RepetitionInfo repetitionInfo) {
+    void generateRandomMovementConditionTest(RepetitionInfo repetitionInfo) {
+        // given
+        int startRange = 0;
+        int endRange = 9;
+
         // when
         int movementCondition = MovementConditionRandomGenerator.generateRandomMovementCondition();
         System.out.println("반복 횟수: " + repetitionInfo.getCurrentRepetition() + "/" + repetitionInfo.getTotalRepetitions());
@@ -18,6 +22,6 @@ class MovementConditionRandomGeneratorTest {
         System.out.println("=========================");
 
         // then
-        assertThat(movementCondition).isBetween(0, 9);
+        assertThat(movementCondition).isBetween(startRange, endRange);
     }
 }

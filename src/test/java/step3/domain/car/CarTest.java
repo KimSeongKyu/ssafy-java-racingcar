@@ -21,16 +21,16 @@ public class CarTest {
         movementStrategy = MovementStrategySelector.getInstance(4).getMovementStrategy();
     }
 
-    static Stream<Arguments> provideDecisionForMoveTest() {
+    static Stream<Arguments> provideMovementConditionForMoveTest() {
         return Stream.of(
                 Arguments.of(5, 2),
-                Arguments.of(3, "1")
+                Arguments.of(3, 1)
         );
     }
 
     @DisplayName(value = "이동 가능 여부에 따른 차량 이동 테스트")
     @ParameterizedTest(name = "{index}. 이동 가능 여부: [{0}] 이동 후 차량 위치: [{1}]")
-    @MethodSource(value = "provideDecisionForMoveTest")
+    @MethodSource(value = "provideMovementConditionForMoveTest")
     void moveTest(int movementCondition, int expectedPosition) {
         // given
         Car car = new Car();

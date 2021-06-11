@@ -30,7 +30,7 @@ public class MovementStrategySelectorTest {
 
         // when and then
         assertThatExceptionOfType(IllegalMovementStrategyException.class).isThrownBy(() -> {
-            MovementStrategySelector movementStrategySelector = MovementStrategySelector.getInstance(movementStrategyNumber);
+            MovementStrategySelector.getInstance(movementStrategyNumber);
         });
     }
 

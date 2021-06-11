@@ -11,7 +11,7 @@ class CarsTest {
 
     @DisplayName(value = "생성 테스트")
     @Test
-    void ConstructorTest() {
+    void constructTest() {
         // given
         NumberOfCars numberOfCars = new NumberOfCars(3);
 
@@ -28,11 +28,12 @@ class CarsTest {
         // given
         NumberOfCars numberOfCars = new NumberOfCars(3);
         Cars cars = new Cars(numberOfCars);
+        int expectedNumberOFCarElements = 3;
 
         // when
         List<Car> carElements = cars.getCars();
 
         // then
-        assertThat(carElements.size()).isEqualTo(3);
+        assertThat(carElements.size()).isEqualTo(expectedNumberOFCarElements);
     }
 }
