@@ -27,7 +27,7 @@ public class Application {
         for (int round = START_ROUND; round <= numberOfRounds.getNumberOfRounds(); round++) {
             cars.getCars()
                     .stream()
-                    .forEachOrdered(car -> car.move(MovementConditionRandomGenerator.generateRandomMovementCondition(),
+                    .forEachOrdered(car -> car = car.move(MovementConditionRandomGenerator.generateRandomMovementCondition(),
                             movementStrategy));
             OutputView.printCarPositions(cars);
         }

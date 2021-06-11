@@ -12,10 +12,15 @@ public final class Car {
         position = START_POSITION;
     }
 
-    public final void move(final int movementStrategyNumber, final MovementStrategy movementStrategy) {
+    private Car(final int position) {
+        this.position = position;
+    }
+
+    public final Car move(final int movementStrategyNumber, final MovementStrategy movementStrategy) {
         if (movementStrategy.isMovable(movementStrategyNumber)) {
-            ++position;
+            return new Car(++position);
         }
+        return this;
     }
 
     public final int getPosition() {
