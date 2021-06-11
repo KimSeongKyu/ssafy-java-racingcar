@@ -1,6 +1,6 @@
 package step3.domain.car;
 
-import step3.domain.strategy.movement.MovementStrategy;
+import step3.domain.strategy.MovementStrategy;
 
 public final class Car {
 
@@ -16,8 +16,8 @@ public final class Car {
         this.position = position;
     }
 
-    public final Car move(final int movementStrategyNumber, final MovementStrategy movementStrategy) {
-        if (movementStrategy.isMovable(movementStrategyNumber)) {
+    public final Car move(final MovementStrategy movementStrategy) {
+        if (movementStrategy.isMovable()) {
             return new Car(++position);
         }
         return this;

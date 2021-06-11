@@ -4,8 +4,6 @@ import step3.domain.car.Cars;
 import step3.domain.car.NumberOfCars;
 import step3.domain.game.NumberOfRounds;
 import step3.domain.movement.MovementConditionRandomGenerator;
-import step3.domain.strategy.movement.MovementStrategy;
-import step3.domain.strategy.movement.MovementStrategySelector;
 import step3.view.InputView;
 import step3.view.OutputView;
 
@@ -20,15 +18,14 @@ public class Application {
 
         final NumberOfRounds numberOfRounds = new NumberOfRounds(InputView.inputNumberOfRounds());
 
-        final MovementStrategy movementStrategy = MovementStrategySelector.getInstance(MOVEMENT_STRATEGY_NUMBER)
-                .getMovementStrategy();
-
         OutputView.printResultSentence();
         for (int round = START_ROUND; round <= numberOfRounds.getNumberOfRounds(); round++) {
-            cars.getCars()
-                    .stream()
-                    .forEachOrdered(car -> car = car.move(MovementConditionRandomGenerator.generateRandomMovementCondition(),
-                            movementStrategy));
+            cars.getCars().stream()
+                    .forEach(car ->
+                            car = car.move(() ->
+                                    MovementConditionRandomGenerator.generateRandomMovementCondition() >= MOVEMENT_STRATEGY_NUMBER
+                            )
+                    );
             OutputView.printCarPositions(cars);
         }
     }
