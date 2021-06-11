@@ -16,11 +16,11 @@ public class Application {
 
     public static void main(String[] args) {
         final NumberOfCars numberOfCars = new NumberOfCars(InputView.inputNumberOfCars());
-        Cars cars = new Cars(numberOfCars);
+        final Cars cars = new Cars(numberOfCars);
 
         final NumberOfRounds numberOfRounds = new NumberOfRounds(InputView.inputNumberOfRounds());
 
-        MovementStrategy movementStrategy = MovementStrategySelector.getInstance(MOVEMENT_STRATEGY_NUMBER)
+        final MovementStrategy movementStrategy = MovementStrategySelector.getInstance(MOVEMENT_STRATEGY_NUMBER)
                 .getMovementStrategy();
 
         OutputView.printResultSentence();
