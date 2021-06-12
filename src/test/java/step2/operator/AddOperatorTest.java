@@ -15,7 +15,7 @@ class AddOperatorTest {
 
     @BeforeAll
     static void setUp() {
-        operator = new AddOperator();
+        operator = AddOperator.getInstance();
     }
 
     @DisplayName(value = "두 수에 대한 덧셈 테스트")
