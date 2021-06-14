@@ -11,7 +11,6 @@ import step4.exception.name.NamesNullPointerException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,7 +29,7 @@ class NamesTest {
     @Test
     void constructTest() {
         // given
-        List<String> namesAsString = Arrays.stream(new String[]{"name", "for", "test"}).collect(Collectors.toList());
+        List<String> namesAsString = Arrays.asList(new String[]{"name", "for", "test"});
 
         // when
         Names names = new Names(namesAsString);
@@ -39,12 +38,26 @@ class NamesTest {
         assertThat(names).isNotNull();
     }
 
-
     @DisplayName(value = "null 혹은 빈 리스트를 파라미터로 생성 시 예외가 발생하는 테스트")
     @ParameterizedTest(name = "{index}. 리스트: {0} 발생하는 예외: {1}")
     @MethodSource(value = "provideNullAndEmptyListForConstructThrowExceptionTest")
     void constructThrowExceptionTest(List<String> names, Class exception) {
         // when and then
         assertThatExceptionOfType(exception).isThrownBy(() -> new Names(names));
+    }
+
+    @DisplayName(value = "생성 시 파라미터로 받은 이름 리스트를 멤버 변수로 갖는지 확인하는 테스트")
+    @Test
+    void namesTest() {
+        // given
+        List<String> namesAsString = Arrays.asList(new String[]{"name", "for", "test"});
+        Names wrapperNames = new Names(namesAsString);
+        int expectedListSize = 3;
+
+        // when
+        List<Name> names = wrapperNames.names();
+
+        // then
+        assertThat(names.size()).isEqualTo(expectedListSize);
     }
 }
