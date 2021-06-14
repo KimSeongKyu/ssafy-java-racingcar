@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class NameTest {
 
@@ -18,5 +19,17 @@ class NameTest {
 
         // then
         assertThat(name).isNotNull();
+    }
+
+    @DisplayName(value = "문자열의 길이가 5 초과인 경우 생성 시 예외가 발생하는 테스트")
+    @Test
+    void constructThrowExceptionTest() {
+        // given
+        String nameWithLengthLongerThanFive = "kimSeongKyu";
+
+        // when and then
+        assertThatExceptionOfType(NameLengthOutOfBoundException.class).isThrownBy(() -> {
+            new Name(nameWithLengthLongerThanFive);
+        });
     }
 }
