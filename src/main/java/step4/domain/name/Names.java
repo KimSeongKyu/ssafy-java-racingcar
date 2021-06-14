@@ -34,4 +34,8 @@ public final class Names {
             throw new NamesEmptyException();
         }
     }
+
+    public final List<Name> names() {
+        return names;
+    }
 }
