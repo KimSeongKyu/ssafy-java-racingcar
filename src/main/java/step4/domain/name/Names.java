@@ -1,7 +1,7 @@
 package step4.domain.name;
 
-import step4.exception.NamesEmptyException;
-import step4.exception.NamesNullPointerException;
+import step4.exception.name.NamesEmptyException;
+import step4.exception.name.NamesNullPointerException;
 
 import java.util.ArrayList;
 import java.util.List;

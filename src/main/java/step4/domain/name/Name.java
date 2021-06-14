@@ -1,6 +1,6 @@
 package step4.domain.name;
 
-import step4.exception.NameLengthOutOfBoundException;
+import step4.exception.name.NameLengthOutOfBoundException;
 
 public final class Name {
 

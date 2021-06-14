@@ -1,4 +1,4 @@
-package step4.exception;
+package step4.exception.input;
 
 public final class SentenceNullPointerException extends RuntimeException {
 

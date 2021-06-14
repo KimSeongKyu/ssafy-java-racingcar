@@ -2,7 +2,7 @@ package step4.domain.name;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.exception.NameLengthOutOfBoundException;
+import step4.exception.name.NameLengthOutOfBoundException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;

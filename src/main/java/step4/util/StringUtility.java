@@ -1,7 +1,7 @@
 package step4.util;
 
-import step4.exception.SentenceEmptyException;
-import step4.exception.SentenceNullPointerException;
+import step4.exception.input.SentenceEmptyException;
+import step4.exception.input.SentenceNullPointerException;
 
 import java.util.Arrays;
 import java.util.List;

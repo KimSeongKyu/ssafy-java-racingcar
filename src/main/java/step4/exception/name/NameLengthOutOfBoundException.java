@@ -1,4 +1,4 @@
-package step4.exception;
+package step4.exception.name;
 
 public class NameLengthOutOfBoundException extends RuntimeException {
 
