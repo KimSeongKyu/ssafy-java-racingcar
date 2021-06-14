@@ -18,4 +18,8 @@ public final class Name {
             throw new NameLengthOutOfBoundException();
         }
     }
+
+    public final String name() {
+        return name;
+    }
 }
