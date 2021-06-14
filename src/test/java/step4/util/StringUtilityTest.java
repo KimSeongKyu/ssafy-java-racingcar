@@ -8,6 +8,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import step4.exception.SentenceEmptyException;
 import step4.exception.SentenceNullPointerException;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,7 +33,7 @@ class StringUtilityTest {
         String[] expectedResult = {"split", "by", "comma", "test"};
 
         // when
-        String[] sentenceSplitByComma = StringUtility.splitByComma(sentence);
+        List<String> sentenceSplitByComma = StringUtility.splitByComma(sentence);
 
         // then
         assertThat(sentenceSplitByComma).containsExactly(expectedResult);

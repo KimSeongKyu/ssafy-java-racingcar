@@ -3,16 +3,19 @@ package step4.util;
 import step4.exception.SentenceEmptyException;
 import step4.exception.SentenceNullPointerException;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public final class StringUtility {
 
     private final static String COMMA = ",";
 
-    public final static String[] splitByComma(final String sentence) {
+    public final static List<String> splitByComma(final String sentence) {
         validateSentenceIsNull(sentence);
         validateSentenceIsEmpty(sentence);
-        return sentence.split(COMMA);
+        return Arrays.stream(sentence.split(COMMA)).collect(Collectors.toList());
     }
 
     private final static void validateSentenceIsNull(final String sentence) {
