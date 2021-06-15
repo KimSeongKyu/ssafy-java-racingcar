@@ -27,4 +27,8 @@ public final class Car {
     public final Name name() {
         return name;
     }
+
+    public final int position() {
+        return position;
+    }
 }
