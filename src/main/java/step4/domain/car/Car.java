@@ -23,4 +23,8 @@ public final class Car {
             throw new NameNullPointerException();
         }
     }
+
+    public final Name name() {
+        return name;
+    }
 }
