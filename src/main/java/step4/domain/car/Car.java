@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public final class Car {
 
-    private final static int START_POSITION = 1;
+    public final static int START_POSITION = 1;
 
     private final Name name;
     private final int position;

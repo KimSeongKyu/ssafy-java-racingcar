@@ -23,7 +23,7 @@ public class Application {
         OutputView.printResultSentence();
         for (int round = START_ROUND; round <= numberOfRounds.value(); round++) {
             cars = cars.move(() -> MovementCondition.generateRandomNumberInBound(MOVEMENT_CONDITION_BOUND) >= CRITERION_FOR_MOVE);
+            OutputView.printCarPositions(cars);
         }
-
     }
 }
