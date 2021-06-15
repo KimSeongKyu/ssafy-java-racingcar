@@ -39,4 +39,21 @@ class CarsTest {
         assertThat(carsValues.size()).isEqualTo(expectedListSize);
 
     }
+
+    @DisplayName(value = "차량 이동 테스트")
+    @Test
+    void moveTest() {
+        // given
+        Names names = new Names(Arrays.asList("name", "for", "test"));
+        Cars carsBeforeMove = new Cars(names);
+        int expectedPosition = 2;
+
+        // when
+        Cars carsAfterMove = carsBeforeMove.move(() -> true);
+
+        // then
+        carsAfterMove.values().stream().forEachOrdered(car -> {
+            assertThat(car.position()).isEqualTo(expectedPosition);
+        });
+    }
 }
