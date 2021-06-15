@@ -11,14 +11,14 @@ public final class Cars {
     private final List<Car> values;
 
     public Cars(final Names names) {
-        this(names.values());
+        this(createCars(names.values()));
     }
 
-    public Cars(final List<Name> names) {
-        this.values = createCars(names);
+    public Cars(final List<Car> cars) {
+        values = cars;
     }
 
-    private final List<Car> createCars(final List<Name> names) {
+    private final static List<Car> createCars(final List<Name> names) {
         List<Car> cars = new ArrayList<>();
         names.stream().forEachOrdered(name -> cars.add(new Car(name)));
         return cars;
