@@ -45,4 +45,19 @@ class CarTest {
         // then
         assertThat(resultName).isEqualTo(name);
     }
+
+    @DisplayName(value = "자동차의 위치를 반환하는 테스트")
+    @Test
+    void positionTest() {
+        // given
+        Name name = new Name("kim");
+        Car car = new Car(name);
+        int expectedPosition = 1;
+
+        // when
+        int position = car.position();
+
+        // then
+        assertThat(position).isEqualTo(expectedPosition);
+    }
 }
