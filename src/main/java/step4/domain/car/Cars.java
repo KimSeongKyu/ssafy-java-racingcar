@@ -8,14 +8,14 @@ import java.util.List;
 
 public final class Cars {
 
-    private final List<Car> cars;
+    private final List<Car> values;
 
     public Cars(final Names names) {
-        this(names.names());
+        this(names.values());
     }
 
     public Cars(final List<Name> names) {
-        this.cars = createCars(names);
+        this.values = createCars(names);
     }
 
     private final List<Car> createCars(final List<Name> names) {
@@ -24,7 +24,7 @@ public final class Cars {
         return cars;
     }
 
-    public final List<Car> cars() {
-        return cars;
+    public final List<Car> values() {
+        return values;
     }
 }

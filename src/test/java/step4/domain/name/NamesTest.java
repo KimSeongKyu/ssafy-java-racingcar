@@ -48,16 +48,16 @@ class NamesTest {
 
     @DisplayName(value = "생성 시 파라미터로 받은 이름 리스트를 멤버 변수로 갖는지 확인하는 테스트")
     @Test
-    void namesTest() {
+    void valuesTest() {
         // given
         List<String> namesAsString = Arrays.asList(new String[]{"name", "for", "test"});
-        Names wrapperNames = new Names(namesAsString);
+        Names names = new Names(namesAsString);
         int expectedListSize = 3;
 
         // when
-        List<Name> names = wrapperNames.names();
+        List<Name> namesValues = names.values();
 
         // then
-        assertThat(names.size()).isEqualTo(expectedListSize);
+        assertThat(namesValues.size()).isEqualTo(expectedListSize);
     }
 }

@@ -9,12 +9,12 @@ import java.util.Objects;
 
 public final class Names {
 
-    private final List<Name> names;
+    private final List<Name> values;
 
     public Names(final List<String> namesAsString) {
         validateNamesAsStringAreNull(namesAsString);
         validateNamesAsStringAreEmpty(namesAsString);
-        this.names = createNames(namesAsString);
+        values = createNames(namesAsString);
     }
 
     private final List<Name> createNames(final List<String> namesAsString) {
@@ -35,7 +35,7 @@ public final class Names {
         }
     }
 
-    public final List<Name> names() {
-        return names;
+    public final List<Name> values() {
+        return values;
     }
 }

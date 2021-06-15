@@ -36,15 +36,15 @@ class NameTest {
 
     @DisplayName(value = "생성 시 파라미터로 받은 문자열을 멤버 변수로 갖는지 확인하는 테스트")
     @Test
-    void nameTest() {
+    void valueTest() {
         // given
         Name name = new Name("kim");
         String expectedResult = "kim";
 
         // when
-        String nameAsString = name.name();
+        String nameValue = name.value();
 
         // then
-        assertThat(nameAsString).isEqualTo(expectedResult);
+        assertThat(nameValue).isEqualTo(expectedResult);
     }
 }

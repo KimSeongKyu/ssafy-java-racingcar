@@ -6,11 +6,11 @@ public final class Name {
 
     private final static int BOUND = 5;
 
-    private final String name;
+    private final String value;
 
     public Name(final String name) {
         validateNameLengthInBound(name);
-        this.name = name;
+        value = name;
     }
 
     private final void validateNameLengthInBound(final String name) {
@@ -19,7 +19,7 @@ public final class Name {
         }
     }
 
-    public final String name() {
-        return name;
+    public final String value() {
+        return value;
     }
 }
