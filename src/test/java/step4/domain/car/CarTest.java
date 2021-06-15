@@ -60,4 +60,19 @@ class CarTest {
         // then
         assertThat(position).isEqualTo(expectedPosition);
     }
+
+    @DisplayName(value = "전략 패턴에 따라 자동차가 이동하는 테스트")
+    @Test
+    void moveTest() {
+        // given
+        Name name = new Name("kim");
+        Car carBeforeMove = new Car(name);
+        int expectedPosition = 2;
+
+        // when
+        Car carAfterMove = carBeforeMove.move(() -> true);
+
+        // then
+        assertThat(carAfterMove.position()).isEqualTo(expectedPosition);
+    }
 }
