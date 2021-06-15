@@ -6,7 +6,6 @@ import step4.exception.input.SentenceNullPointerException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public final class StringUtility {
 
@@ -15,7 +14,7 @@ public final class StringUtility {
     public final static List<String> splitByComma(final String sentence) {
         validateSentenceIsNull(sentence);
         validateSentenceIsEmpty(sentence);
-        return Arrays.stream(sentence.split(COMMA)).collect(Collectors.toList());
+        return Arrays.asList(sentence.split(COMMA));
     }
 
     private final static void validateSentenceIsNull(final String sentence) {
