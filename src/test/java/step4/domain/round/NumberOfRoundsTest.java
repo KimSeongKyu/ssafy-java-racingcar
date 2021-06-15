@@ -33,4 +33,18 @@ class NumberOfRoundsTest {
             new NumberOfRounds(numberOfRoundsValue);
         });
     }
+
+    @DisplayName(value = "라운드 수를 반환하는 테스트")
+    @Test
+    void valueTest() {
+        // given
+        NumberOfRounds numberOfRounds = new NumberOfRounds(3);
+        int expectedResult = 3;
+
+        // when
+        int numberOfRoundsValue = numberOfRounds.value();
+
+        // then
+        assertThat(numberOfRoundsValue).isEqualTo(expectedResult);
+    }
 }
