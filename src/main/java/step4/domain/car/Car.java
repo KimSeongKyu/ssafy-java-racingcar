@@ -2,6 +2,7 @@ package step4.domain.car;
 
 import step4.domain.name.Name;
 import step4.exception.name.NameNullPointerException;
+import step4.strategy.MovementStrategy;
 
 import java.util.Objects;
 
@@ -34,5 +35,9 @@ public final class Car {
 
     public final int position() {
         return position;
+    }
+
+    public final Car move(final MovementStrategy movementStrategy) {
+        return movementStrategy.isMovable() ? new Car(name, position + 1) : this;
     }
 }
