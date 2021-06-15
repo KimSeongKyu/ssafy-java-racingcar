@@ -1,5 +1,6 @@
 package step4.domain.car;
 
+import step4.domain.movement.MovementCondition;
 import step4.domain.name.Name;
 import step4.domain.name.Names;
 import step4.strategy.MovementStrategy;
@@ -28,7 +29,7 @@ public final class Cars {
 
     public final Cars move(final MovementStrategy movementStrategy) {
         return new Cars(values.stream().map(car ->
-                movementStrategy.isMovable() ? new Car(car.name(), car.position() + 1) : car)
+                car.move(movementStrategy))
                 .collect(Collectors.toList()));
     }
 
