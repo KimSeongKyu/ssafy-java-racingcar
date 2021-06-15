@@ -6,6 +6,7 @@ import step4.domain.name.Names;
 import step4.domain.round.NumberOfRounds;
 import step4.util.StringUtility;
 import step4.view.InputView;
+import step4.view.OutputView;
 
 public class Application {
 
@@ -19,6 +20,7 @@ public class Application {
 
         final NumberOfRounds numberOfRounds = new NumberOfRounds(InputView.inputNumberOfRounds());
 
+        OutputView.printResultSentence();
         for (int round = START_ROUND; round <= numberOfRounds.value(); round++) {
             cars = cars.move(() -> MovementCondition.generateRandomNumberInBound(MOVEMENT_CONDITION_BOUND) >= CRITERION_FOR_MOVE);
         }
