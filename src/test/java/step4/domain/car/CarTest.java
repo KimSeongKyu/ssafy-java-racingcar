@@ -31,4 +31,18 @@ class CarTest {
             new Car(null);
         });
     }
+
+    @DisplayName(value = "자동차의 이름을 반환하는 테스트")
+    @Test
+    void nameTest() {
+        // given
+        Name name = new Name("kim");
+        Car car = new Car(name);
+
+        // when
+        Name resultName = car.name();
+
+        // then
+        assertThat(resultName).isEqualTo(name);
+    }
 }
