@@ -13,9 +13,13 @@ public final class Car {
     private final int position;
 
     public Car(final Name name) {
+        this(name, START_POSITION);
+    }
+
+    public Car(final Name name, final int position) {
         validateNameIsNull(name);
         this.name = name;
-        this.position = START_POSITION;
+        this.position = position;
     }
 
     private final void validateNameIsNull(final Name name) {
