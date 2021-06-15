@@ -23,4 +23,8 @@ public final class Cars {
         names.stream().forEachOrdered(name -> cars.add(new Car(name)));
         return cars;
     }
+
+    public final List<Car> cars() {
+        return cars;
+    }
 }
