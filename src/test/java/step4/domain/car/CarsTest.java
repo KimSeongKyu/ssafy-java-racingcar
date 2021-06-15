@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import step4.domain.name.Names;
 
 import java.util.Arrays;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,5 +22,21 @@ class CarsTest {
 
         // then
         assertThat(cars).isNotNull();
+    }
+
+    @DisplayName(value = "자동차 리스트를 반환하는 테스트")
+    @Test
+    void carsTest() {
+        // given
+        Names names = new Names(Arrays.asList("name", "for", "test"));
+        Cars cars = new Cars(names);
+        int expectedListSize = 3;
+
+        // when
+        List<Car> carsValues = cars.cars();
+
+        // then
+        assertThat(carsValues.size()).isEqualTo(expectedListSize);
+
     }
 }
