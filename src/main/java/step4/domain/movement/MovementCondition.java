@@ -4,9 +4,9 @@ import java.util.Random;
 
 public final class MovementCondition {
 
-    private final static Random randomValue = new Random();
+    private final static Random randomNumber = new Random();
 
-    public final static int generateRandomValueInBound(final int bound) {
-        return randomValue.nextInt(bound);
+    public final static int generateRandomNumberInBound(final int bound) {
+        return randomNumber.nextInt(bound);
     }
 }

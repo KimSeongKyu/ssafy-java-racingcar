@@ -17,7 +17,7 @@ class MovementConditionTest {
         int bound = 10;
 
         // when
-        int movementCondition = MovementCondition.generateRandomValueInBound(bound);
+        int movementCondition = MovementCondition.generateRandomNumberInBound(bound);
         System.out.println("반복 횟수: " + repetitionInfo.getCurrentRepetition() + "/" + repetitionInfo.getTotalRepetitions());
         System.out.println("생성된 난수: " + movementCondition);
         System.out.println("=========================");
