@@ -1,7 +1,7 @@
 package step4.domain.name;
 
-import step4.exception.name.NamesEmptyException;
-import step4.exception.name.NamesNullPointerException;
+import step4.exception.name.NamesAsStringEmptyException;
+import step4.exception.name.NamesAsStringNullPointerException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,8 @@ public final class Names {
     private final List<Name> names;
 
     public Names(final List<String> namesAsString) {
-        validateNamesAreNull(namesAsString);
-        validateNamesAreEmpty(namesAsString);
+        validateNamesAsStringAreNull(namesAsString);
+        validateNamesAsStringAreEmpty(namesAsString);
         this.names = createNames(namesAsString);
     }
 
@@ -23,15 +23,15 @@ public final class Names {
         return names;
     }
 
-    private final void validateNamesAreNull(final List<String> namesAsString) {
+    private final void validateNamesAsStringAreNull(final List<String> namesAsString) {
         if (Objects.isNull(namesAsString)) {
-            throw new NamesNullPointerException();
+            throw new NamesAsStringNullPointerException();
         }
     }
 
-    private final void validateNamesAreEmpty(final List<String> namesAsString) {
+    private final void validateNamesAsStringAreEmpty(final List<String> namesAsString) {
         if(namesAsString.isEmpty()) {
-            throw new NamesEmptyException();
+            throw new NamesAsStringEmptyException();
         }
     }
 
