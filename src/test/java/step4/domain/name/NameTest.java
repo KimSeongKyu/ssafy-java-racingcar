@@ -18,7 +18,7 @@ class NameTest {
     static Stream<Arguments> provideNameAsStringForConstructThrowExceptionTest() {
         return Stream.of(
                 Arguments.of(null, new NameNullPointerException()),
-                Arguments.of("", new EmptyNameException()),
+                Arguments.of("", new NameLengthOutOfBoundException()),
                 Arguments.of("KimSeongKyu", new NameLengthOutOfBoundException())
         );
     }
@@ -36,7 +36,7 @@ class NameTest {
         assertThat(name).isNotNull();
     }
 
-    @DisplayName(value = "String형 이름이 null, 빈 문자열, 혹은 5글자 초과인 경우 생성 시 예외가 발생하는 테스트")
+    @DisplayName(value = "String형 이름이 null 혹은 범위를 벗어난 경우 생성 시 예외가 발생하는 테스트")
     @ParameterizedTest(name = "{index}. 이름: {0} 발생하는 예외: {1}")
     @MethodSource(value = "provideNameAsStringForConstructThrowExceptionTest")
     void constructThrowExceptionTest(String name, RuntimeException exception) {
