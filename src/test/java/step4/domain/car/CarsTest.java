@@ -3,11 +3,13 @@ package step4.domain.car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.car.name.Names;
+import step4.exception.car.CarsNullPointerException;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class CarsTest {
 
@@ -22,6 +24,15 @@ class CarsTest {
 
         // then
         assertThat(cars).isNotNull();
+    }
+
+    @DisplayName(value = "Car 리스트가 null일 경우 생성 시 예외를 발생시키는 테스트")
+    @Test
+    void constructThrowExceptionTest() {
+        // when and then
+        assertThatExceptionOfType(CarsNullPointerException.class).isThrownBy(() -> {
+            new Cars((List<Car>) null);
+        });
     }
 
     @DisplayName(value = "자동차 리스트를 반환하는 테스트")
