@@ -4,6 +4,7 @@ import step4.domain.car.Cars;
 import step4.domain.movement.MovementCondition;
 import step4.domain.name.Names;
 import step4.domain.round.NumberOfRounds;
+import step4.domain.winners.Winners;
 import step4.util.StringUtility;
 import step4.view.InputView;
 import step4.view.OutputView;
@@ -25,5 +26,6 @@ public class Application {
             cars = cars.move(() -> MovementCondition.generateRandomNumberInBound(MOVEMENT_CONDITION_BOUND) >= CRITERION_FOR_MOVE);
             OutputView.printCarPositions(cars);
         }
+        OutputView.printWinnersNames(new Winners(cars));
     }
 }
