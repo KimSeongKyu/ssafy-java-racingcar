@@ -22,7 +22,6 @@ public final class Car {
     public Car(final Name name, final Position position) {
         validateNameIsNull(name);
         validatePositionIsNull(position);
-
         this.name = name;
         this.position = position;
     }

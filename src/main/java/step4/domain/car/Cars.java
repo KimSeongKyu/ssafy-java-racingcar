@@ -29,14 +29,14 @@ public final class Cars {
     }
 
     private final void validateCarsAreNull(final List<Car> cars) {
-        if(Objects.isNull(cars)) {
+        if (Objects.isNull(cars)) {
             throw new CarsNullPointerException();
         }
     }
 
     public final Cars move(final MovementStrategy movementStrategy) {
-        return new Cars(values.stream().map(car ->
-                car.move(movementStrategy))
+        return new Cars(values.stream()
+                .map(car -> car.move(movementStrategy))
                 .collect(Collectors.toList()));
     }
 

@@ -16,7 +16,7 @@ public final class Winners {
     }
 
     private final void validateCarsAreNull(final Cars cars) {
-        if(Objects.isNull(cars)) {
+        if (Objects.isNull(cars)) {
             throw new CarsNullPointerException();
         }
     }
