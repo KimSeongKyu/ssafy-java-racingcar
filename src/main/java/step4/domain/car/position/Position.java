@@ -18,4 +18,8 @@ public final class Position {
             throw new PositionNotPositiveException();
         }
     }
+
+    public final int value() {
+        return value;
+    }
 }
