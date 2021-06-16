@@ -8,6 +8,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import step4.domain.car.name.Name;
 import step4.domain.car.position.Position;
 import step4.exception.name.NameNullPointerException;
+import step4.exception.position.PositionNullPointerException;
 
 import java.util.stream.Stream;
 
