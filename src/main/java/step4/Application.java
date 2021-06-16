@@ -3,7 +3,7 @@ package step4;
 import step4.domain.car.Cars;
 import step4.domain.movement.MovementCondition;
 import step4.domain.car.name.Names;
-import step4.domain.round.NumberOfRounds;
+import step4.domain.round.TotalRound;
 import step4.domain.winners.Winners;
 import step4.util.StringUtility;
 import step4.view.InputView;
@@ -19,10 +19,10 @@ public class Application {
         final Names names = new Names(StringUtility.splitByComma(InputView.inputNames()));
         Cars cars = new Cars(names);
 
-        final NumberOfRounds numberOfRounds = new NumberOfRounds(InputView.inputNumberOfRounds());
+        final TotalRound totalRound = new TotalRound(InputView.inputTotalRound());
 
         OutputView.printResultSentence();
-        for (int round = START_ROUND; round <= numberOfRounds.value(); round++) {
+        for (int round = START_ROUND; round <= totalRound.value(); round++) {
             cars = cars.move(() -> MovementCondition.generateRandomNumberInBound(MOVEMENT_CONDITION_BOUND) >= CRITERION_FOR_MOVE);
             OutputView.printCarPositions(cars);
         }
