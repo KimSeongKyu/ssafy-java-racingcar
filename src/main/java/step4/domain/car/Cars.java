@@ -4,7 +4,6 @@ import step4.domain.car.name.Name;
 import step4.domain.car.name.Names;
 import step4.strategy.MovementStrategy;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -22,9 +21,9 @@ public final class Cars {
     }
 
     private final static List<Car> createCars(final List<Name> names) {
-        List<Car> cars = new ArrayList<>();
-        names.stream().forEachOrdered(name -> cars.add(new Car(name)));
-        return cars;
+        return names.stream()
+                .map(name -> new Car(name))
+                .collect(Collectors.toList());
     }
 
     public final Cars move(final MovementStrategy movementStrategy) {
