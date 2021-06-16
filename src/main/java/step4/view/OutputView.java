@@ -24,7 +24,7 @@ public final class OutputView {
             OUTPUT.setLength(EMPTY);
             OUTPUT.append(car.name().value()).append(COLON);
 
-            for (int position = Car.START_POSITION; position <= car.position(); position++) {
+            for (int position = Car.START_POSITION; position <= car.position().value(); position++) {
                 OUTPUT.append(POSITION_TO_STRING);
             }
 

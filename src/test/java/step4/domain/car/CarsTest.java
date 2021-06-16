@@ -53,7 +53,7 @@ class CarsTest {
 
         // then
         carsAfterMove.values().stream().forEachOrdered(car -> {
-            assertThat(car.position()).isEqualTo(expectedPosition);
+            assertThat(car.position().value()).isEqualTo(expectedPosition);
         });
     }
 }

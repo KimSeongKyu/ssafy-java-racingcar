@@ -3,6 +3,7 @@ package step4.domain.car;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.car.name.Name;
+import step4.domain.car.position.Position;
 import step4.exception.name.NameNullPointerException;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,12 +51,11 @@ class CarTest {
     @Test
     void positionTest() {
         // given
-        Name name = new Name("kim");
-        Car car = new Car(name);
-        int expectedPosition = 1;
+        Position expectedPosition = new Position(1);
+        Car car = new Car(new Name("kim"), expectedPosition);
 
         // when
-        int position = car.position();
+        Position position = car.position();
 
         // then
         assertThat(position).isEqualTo(expectedPosition);
@@ -65,9 +65,8 @@ class CarTest {
     @Test
     void moveTest() {
         // given
-        Name name = new Name("kim");
-        Car carBeforeMove = new Car(name);
-        int expectedPosition = 2;
+        Car carBeforeMove = new Car(new Name("kim"));
+        Position expectedPosition = new Position(2);
 
         // when
         Car carAfterMove = carBeforeMove.move(() -> true);

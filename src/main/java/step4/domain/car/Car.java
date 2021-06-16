@@ -1,6 +1,7 @@
 package step4.domain.car;
 
 import step4.domain.car.name.Name;
+import step4.domain.car.position.Position;
 import step4.exception.name.NameNullPointerException;
 import step4.strategy.MovementStrategy;
 
@@ -11,13 +12,13 @@ public final class Car {
     public final static int START_POSITION = 1;
 
     private final Name name;
-    private final int position;
+    private final Position position;
 
     public Car(final Name name) {
-        this(name, START_POSITION);
+        this(name, new Position(START_POSITION));
     }
 
-    public Car(final Name name, final int position) {
+    public Car(final Name name, final Position position) {
         validateNameIsNull(name);
         this.name = name;
         this.position = position;
@@ -33,12 +34,12 @@ public final class Car {
         return name;
     }
 
-    public final int position() {
+    public final Position position() {
         return position;
     }
 
     public final Car move(final MovementStrategy movementStrategy) {
-        return movementStrategy.isMovable() ? new Car(name, position + 1) : this;
+        return movementStrategy.isMovable() ? new Car(name, new Position(position.value() + 1)) : this;
     }
 
     @Override
@@ -46,7 +47,7 @@ public final class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return position == car.position && Objects.equals(name, car.name);
+        return Objects.equals(name, car.name) && Objects.equals(position, car.position);
     }
 
     @Override

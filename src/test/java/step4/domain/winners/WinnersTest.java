@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import step4.domain.car.Car;
 import step4.domain.car.Cars;
 import step4.domain.car.name.Name;
+import step4.domain.car.position.Position;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,9 +22,9 @@ class WinnersTest {
     void setUp() {
         winnerPosition = 3;
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(new Name("kim"), 2));
-        cars.add(new Car(new Name("seong"), winnerPosition));
-        cars.add(new Car(new Name("kyu"), winnerPosition));
+        cars.add(new Car(new Name("kim"), new Position(2)));
+        cars.add(new Car(new Name("seong"), new Position(winnerPosition)));
+        cars.add(new Car(new Name("kyu"), new Position(winnerPosition)));
         racingCars = new Cars(cars);
     }
 
@@ -42,8 +43,8 @@ class WinnersTest {
     void carsTest() {
         // given
         List<Car> cars = new ArrayList<>();
-        cars.add(new Car(new Name("seong"), winnerPosition));
-        cars.add(new Car(new Name("kyu"), winnerPosition));
+        cars.add(new Car(new Name("seong"), new Position(winnerPosition)));
+        cars.add(new Car(new Name("kyu"), new Position(winnerPosition)));
         Cars winnerCars = new Cars(cars);
 
         // when
