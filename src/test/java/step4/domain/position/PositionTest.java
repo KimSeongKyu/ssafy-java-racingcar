@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class PositionTest {
 
@@ -18,5 +19,17 @@ class PositionTest {
 
         // then
         assertThat(position).isNotNull();
+    }
+
+    @DisplayName(value = "int형 위치가 1 미만일 경우 생성 시 예외가 발생하는 테스트")
+    @Test
+    void constructThrowExceptionTest() {
+        // given
+        int positionAsInt = 0;
+
+        // when and then
+        assertThatExceptionOfType(PositionNotPositiveException.class).isThrownBy(() -> {
+            new Position(positionAsInt);
+        });
     }
 }
