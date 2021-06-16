@@ -5,8 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import step4.exception.name.NamesAsStringEmptyException;
-import step4.exception.name.NamesAsStringNullPointerException;
+import step4.exception.name.EmptyNamesException;
+import step4.exception.name.NamesNullPointerException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,8 +20,8 @@ class NamesTest {
 
     static Stream<Arguments> provideNullAndEmptyListForConstructThrowExceptionTest() {
         return Stream.of(
-                Arguments.of(null, NamesAsStringNullPointerException.class),
-                Arguments.of(new ArrayList<String>(), NamesAsStringEmptyException.class)
+                Arguments.of(null, NamesNullPointerException.class),
+                Arguments.of(new ArrayList<String>(), EmptyNamesException.class)
         );
     }
 
