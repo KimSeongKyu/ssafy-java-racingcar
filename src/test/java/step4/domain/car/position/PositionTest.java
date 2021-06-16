@@ -33,4 +33,18 @@ class PositionTest {
             new Position(positionAsInt);
         });
     }
+
+    @DisplayName(value = "int형 위치를 반환하는 테스트")
+    @Test
+    void valueTest() {
+        // given
+        int expectedPositionValue = 1;
+        Position position = new Position(expectedPositionValue);
+
+        // when
+        int resultPositionValue = position.value();
+
+        // then
+        assertThat(resultPositionValue).isEqualTo(expectedPositionValue);
+    }
 }
