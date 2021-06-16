@@ -13,24 +13,24 @@ class PositionTest {
     @Test
     void constructTest() {
         // given
-        int positionAsInt = 1;
+        int positionValue = 1;
 
         // when
-        Position position = new Position(positionAsInt);
+        Position resultPosition = new Position(positionValue);
 
         // then
-        assertThat(position).isNotNull();
+        assertThat(resultPosition).isNotNull();
     }
 
     @DisplayName(value = "int형 위치가 1 미만일 경우 생성 시 예외가 발생하는 테스트")
     @Test
     void constructThrowExceptionTest() {
         // given
-        int positionAsInt = 0;
+        int positionValue = 0;
 
         // when and then
         assertThatExceptionOfType(PositionNotPositiveException.class).isThrownBy(() -> {
-            new Position(positionAsInt);
+            new Position(positionValue);
         });
     }
 

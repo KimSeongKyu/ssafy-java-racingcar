@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class NameTest {
 
-    static Stream<Arguments> provideNameAsStringForConstructThrowExceptionTest() {
+    static Stream<Arguments> provideNameValueForConstructThrowExceptionTest() {
         return Stream.of(
                 Arguments.of(null, new NameNullPointerException()),
                 Arguments.of("", new NameLengthOutOfBoundException()),
@@ -23,40 +23,40 @@ class NameTest {
         );
     }
 
-    @DisplayName(value = "문자열 이름을 멤버 변수로 갖는 객체 생성 테스트")
+    @DisplayName(value = "생성 테스트")
     @Test
     void constructTest() {
         // given
-        String nameAsString = "kim";
+        String nameValue = "kim";
 
         // when
-        Name name = new Name(nameAsString);
+        Name resultName = new Name(nameValue);
 
         // then
-        assertThat(name).isNotNull();
+        assertThat(resultName).isNotNull();
     }
 
-    @DisplayName(value = "String형 이름이 null 혹은 범위를 벗어난 경우 생성 시 예외가 발생하는 테스트")
-    @ParameterizedTest(name = "{index}. 이름: {0} 발생하는 예외: {1}")
-    @MethodSource(value = "provideNameAsStringForConstructThrowExceptionTest")
-    void constructThrowExceptionTest(String name, RuntimeException exception) {
+    @DisplayName(value = "String형 이름이 null 혹은 글자 수가 범위를 벗어난 경우 생성 시 예외가 발생하는 테스트")
+    @ParameterizedTest(name = "{index}. String형 이름: {0} 발생하는 예외: {1}")
+    @MethodSource(value = "provideNameValueForConstructThrowExceptionTest")
+    void constructThrowExceptionTest(String nameValue, RuntimeException exception) {
         // when and then
         assertThatExceptionOfType(exception.getClass()).isThrownBy(() -> {
-            new Name(name);
+            new Name(nameValue);
         });
     }
 
-    @DisplayName(value = "생성 시 파라미터로 받은 문자열을 멤버 변수로 갖는지 확인하는 테스트")
+    @DisplayName(value = "String형 이름을 반환하는 테스트")
     @Test
     void valueTest() {
         // given
-        Name name = new Name("kim");
-        String expectedResult = "kim";
+        String expectedNameValue = "kim";
+        Name name = new Name(expectedNameValue);
 
         // when
-        String nameValue = name.value();
+        String resultNameValue = name.value();
 
         // then
-        assertThat(nameValue).isEqualTo(expectedResult);
+        assertThat(resultNameValue).isEqualTo(expectedNameValue);
     }
 }

@@ -34,13 +34,13 @@ class WinnersTest {
     @Test
     void constructTest() {
         // when
-        Winners winners = new Winners(racingCars);
+        Winners resultWinners = new Winners(racingCars);
 
         // then
-        assertThat(winners).isNotNull();
+        assertThat(resultWinners).isNotNull();
     }
 
-    @DisplayName(value = "자동차 Wrapper Instance가 null일 경우 생성 시 예외를 발생시키는 테스트")
+    @DisplayName(value = "Cars가 null일 경우 생성 시 예외가 발생하는 테스트")
     @Test
     void constructThrowExceptionTest() {
         // when and then
@@ -49,19 +49,21 @@ class WinnersTest {
         });
     }
 
-    @DisplayName(value = "우승자 자동차를 반환하는 테스트")
+    @DisplayName(value = "우승자 Cars를 반환하는 테스트")
     @Test
     void carsTest() {
         // given
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(new Name("seong"), new Position(winnerPosition)));
-        cars.add(new Car(new Name("kyu"), new Position(winnerPosition)));
-        Cars winnerCars = new Cars(cars);
+        List<Car> winnersCarsValues = new ArrayList<>();
+        winnersCarsValues.add(new Car(new Name("seong"), new Position(winnerPosition)));
+        winnersCarsValues.add(new Car(new Name("kyu"), new Position(winnerPosition)));
+        Cars expectedWinnersCars = new Cars(winnersCarsValues);
 
-        // when
         Winners winners = new Winners(racingCars);
 
+        // when
+        Cars resultWinnersCars = winners.cars();
+
         // then
-        assertThat(winners.cars()).isEqualTo(winnerCars);
+        assertThat(resultWinnersCars).isEqualTo(expectedWinnersCars);
     }
 }

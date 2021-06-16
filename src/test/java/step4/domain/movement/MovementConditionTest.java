@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MovementConditionTest {
 
-    @DisplayName(value = "범위 내의 난수 생성 테스트")
+    @DisplayName(value = "범위 내의 난수를 생성하는 테스트")
     @RepeatedTest(value = 10, name = "반복 횟수: {currentRepetition}/{totalRepetitions}")
     void generateRandomValueInBoundTest(RepetitionInfo repetitionInfo) {
         // given
@@ -17,12 +17,12 @@ class MovementConditionTest {
         int bound = 10;
 
         // when
-        int movementCondition = MovementCondition.generateRandomNumberInBound(bound);
+        int resultRandomNumber = MovementCondition.generateRandomNumberInBound(bound);
         System.out.println("반복 횟수: " + repetitionInfo.getCurrentRepetition() + "/" + repetitionInfo.getTotalRepetitions());
-        System.out.println("생성된 난수: " + movementCondition);
+        System.out.println("생성된 난수: " + resultRandomNumber);
         System.out.println("=========================");
 
         // then
-        assertThat(movementCondition).isBetween(startRange, endRange);
+        assertThat(resultRandomNumber).isBetween(startRange, endRange);
     }
 }

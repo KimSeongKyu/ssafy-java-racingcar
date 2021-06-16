@@ -16,13 +16,13 @@ class TotalRoundTest {
         int totalRoundValue = 5;
 
         // when
-        TotalRound totalRound = new TotalRound(totalRoundValue);
+        TotalRound resultTotalRound = new TotalRound(totalRoundValue);
 
         // then
-        assertThat(totalRound).isNotNull();
+        assertThat(resultTotalRound).isNotNull();
     }
 
-    @DisplayName(value = "전체 라운드가 1 이상이 아닐 경우 생성 시 예외가 발생하는 테스트")
+    @DisplayName(value = "전체 라운드가 1 미만일 경우 생성 시 예외가 발생하는 테스트")
     @Test
     void constructThrowExceptionTest() {
         // given
@@ -38,13 +38,13 @@ class TotalRoundTest {
     @Test
     void valueTest() {
         // given
-        TotalRound totalRound = new TotalRound(3);
-        int expectedResult = 3;
+        int expectedTotalRoundValue = 3;
+        TotalRound totalRound = new TotalRound(expectedTotalRoundValue);
 
         // when
-        int totalRoundValue = totalRound.value();
+        int resultTotalRoundValue = totalRound.value();
 
         // then
-        assertThat(totalRoundValue).isEqualTo(expectedResult);
+        assertThat(resultTotalRoundValue).isEqualTo(expectedTotalRoundValue);
     }
 }

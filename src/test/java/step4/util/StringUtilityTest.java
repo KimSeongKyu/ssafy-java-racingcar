@@ -18,8 +18,8 @@ class StringUtilityTest {
 
     static Stream<Arguments> provideNullAndEmptyStringForSplitByCommaThrowExceptionTest() {
         return Stream.of(
-                Arguments.of(null, SentenceNullPointerException.class),
-                Arguments.of("", SentenceEmptyException.class)
+                Arguments.of(null, new SentenceNullPointerException()),
+                Arguments.of("", new SentenceEmptyException())
         );
     }
 
@@ -28,21 +28,21 @@ class StringUtilityTest {
     void splitByCommaTest() {
         // given
         String sentence = "split,by,comma,test";
-        String[] expectedResult = {"split", "by", "comma", "test"};
+        String[] expectedSentenceSplitByComma = {"split", "by", "comma", "test"};
 
         // when
-        List<String> sentenceSplitByComma = StringUtility.splitByComma(sentence);
+        List<String> resultSentenceSplitByComma = StringUtility.splitByComma(sentence);
 
         // then
-        assertThat(sentenceSplitByComma).containsExactly(expectedResult);
+        assertThat(resultSentenceSplitByComma).containsExactly(expectedSentenceSplitByComma);
     }
 
     @DisplayName(value = "null 혹은 빈 문자열을 ','기준으로 분리할 때 예외가 발생하는 테스트")
     @ParameterizedTest(name = "{index}. 문자열: {0} 발생하는 예외: {1}")
     @MethodSource(value = "provideNullAndEmptyStringForSplitByCommaThrowExceptionTest")
-    void splitByCommaWithNullAndEmptyStringThrowExceptionTest(String sentence, Class exception) {
+    void splitByCommaThrowExceptionTest(String sentence, RuntimeException exception) {
         // when and then
-        assertThatExceptionOfType(exception).isThrownBy(() -> {
+        assertThatExceptionOfType(exception.getClass()).isThrownBy(() -> {
             StringUtility.splitByComma(sentence);
         });
     }

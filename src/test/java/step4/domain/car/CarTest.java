@@ -24,20 +24,20 @@ class CarTest {
         );
     }
 
-    @DisplayName(value = "이름을 갖는 자동차 생성 테스트")
+    @DisplayName(value = "생성 테스트")
     @Test
     void constructTest() {
         // given
         Name name = new Name("kim");
 
         // when
-        Car car = new Car(name);
+        Car resultCar = new Car(name);
 
         // then
-        assertThat(car).isNotNull();
+        assertThat(resultCar).isNotNull();
     }
 
-    @DisplayName(value = "이름 혹은 위치가 null일 경우 생성 시 예외를 발생시키는 테스트")
+    @DisplayName(value = "이름 혹은 위치가 null일 경우 생성 시 예외가 발생하는 테스트")
     @ParameterizedTest(name = "{index}. 이름: {0} 위치: {1} 발생하는 예외: {2}")
     @MethodSource(value = "provideNameAndPositionForConstructThrowExceptionTest")
     void constructThrowExceptionTest(Name name, Position position, RuntimeException exception) {
@@ -51,14 +51,14 @@ class CarTest {
     @Test
     void nameTest() {
         // given
-        Name name = new Name("kim");
-        Car car = new Car(name);
+        Name expectedName = new Name("kim");
+        Car car = new Car(expectedName);
 
         // when
         Name resultName = car.name();
 
         // then
-        assertThat(resultName).isEqualTo(name);
+        assertThat(resultName).isEqualTo(expectedName);
     }
 
     @DisplayName(value = "자동차의 위치를 반환하는 테스트")
@@ -69,23 +69,23 @@ class CarTest {
         Car car = new Car(new Name("kim"), expectedPosition);
 
         // when
-        Position position = car.position();
+        Position resultPosition = car.position();
 
         // then
-        assertThat(position).isEqualTo(expectedPosition);
+        assertThat(resultPosition).isEqualTo(expectedPosition);
     }
 
     @DisplayName(value = "전략 패턴에 따라 자동차가 이동하는 테스트")
     @Test
     void moveTest() {
         // given
-        Car carBeforeMove = new Car(new Name("kim"));
-        Position expectedPosition = new Position(2);
+        Car car = new Car(new Name("kim"));
+        Car expectedCar = new Car(car.name(), new Position(car.position().value() + 1));
 
         // when
-        Car carAfterMove = carBeforeMove.move(() -> true);
+        Car resultCar = car.move(() -> true);
 
         // then
-        assertThat(carAfterMove.position()).isEqualTo(expectedPosition);
+        assertThat(resultCar).isEqualTo(expectedCar);
     }
 }

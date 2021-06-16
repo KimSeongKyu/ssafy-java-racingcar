@@ -20,44 +20,47 @@ class NamesTest {
 
     static Stream<Arguments> provideNullAndEmptyListForConstructThrowExceptionTest() {
         return Stream.of(
-                Arguments.of(null, NamesNullPointerException.class),
-                Arguments.of(new ArrayList<String>(), EmptyNamesException.class)
+                Arguments.of(null, new NamesNullPointerException()),
+                Arguments.of(new ArrayList<String>(), new EmptyNamesException())
         );
     }
 
-    @DisplayName(value = "이름 리스트를 갖는 생성 테스트")
+    @DisplayName(value = "생성 테스트")
     @Test
     void constructTest() {
         // given
-        List<String> namesAsString = Arrays.asList(new String[]{"name", "for", "test"});
+        List<String> namesValues = Arrays.asList(new String[]{"name", "for", "test"});
 
         // when
-        Names names = new Names(namesAsString);
+        Names resultNames = new Names(namesValues);
 
         // then
-        assertThat(names).isNotNull();
+        assertThat(resultNames).isNotNull();
     }
 
-    @DisplayName(value = "null 혹은 빈 리스트를 파라미터로 생성 시 예외가 발생하는 테스트")
-    @ParameterizedTest(name = "{index}. 리스트: {0} 발생하는 예외: {1}")
+    @DisplayName(value = "String형 이름 리스트가 null 혹은 빈 리스트일 경우 생성 시 예외가 발생하는 테스트")
+    @ParameterizedTest(name = "{index}. String형 이름 리스트: {0} 발생하는 예외: {1}")
     @MethodSource(value = "provideNullAndEmptyListForConstructThrowExceptionTest")
-    void constructThrowExceptionTest(List<String> names, Class exception) {
+    void constructThrowExceptionTest(List<String> namesValues, RuntimeException exception) {
         // when and then
-        assertThatExceptionOfType(exception).isThrownBy(() -> new Names(names));
+        assertThatExceptionOfType(exception.getClass()).isThrownBy(() -> new Names(namesValues));
     }
 
-    @DisplayName(value = "생성 시 파라미터로 받은 이름 리스트를 멤버 변수로 갖는지 확인하는 테스트")
+    @DisplayName(value = "Name 리스트를 반환하는 테스트")
     @Test
     void valuesTest() {
         // given
-        List<String> namesAsString = Arrays.asList(new String[]{"name", "for", "test"});
-        Names names = new Names(namesAsString);
-        int expectedListSize = 3;
+        List<Name> expectedNamesValues = new ArrayList<>();
+        expectedNamesValues.add(new Name("name"));
+        expectedNamesValues.add(new Name("for"));
+        expectedNamesValues.add(new Name("test"));
+
+        Names names = new Names(Arrays.asList(new String[]{"name", "for", "test"}));
 
         // when
-        List<Name> namesValues = names.values();
+        List<Name> resultNamesValues = names.values();
 
         // then
-        assertThat(namesValues.size()).isEqualTo(expectedListSize);
+        assertThat(resultNamesValues).isEqualTo(expectedNamesValues);
     }
 }
