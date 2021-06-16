@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class WinnersTest {
 
@@ -36,6 +37,15 @@ class WinnersTest {
 
         // then
         assertThat(winners).isNotNull();
+    }
+
+    @DisplayName(value = "자동차 Wrapper Instance가 null일 경우 생성 시 예외를 발생시키는 테스트")
+    @Test
+    void constructThrowExceptionTest() {
+        // when and then
+        assertThatExceptionOfType(CarsNullPointerException.class).isThrownBy(() -> {
+            new Winners(null);
+        });
     }
 
     @DisplayName(value = "우승자 자동차를 반환하는 테스트")
