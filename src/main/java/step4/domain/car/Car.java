@@ -40,4 +40,17 @@ public final class Car {
     public final Car move(final MovementStrategy movementStrategy) {
         return movementStrategy.isMovable() ? new Car(name, position + 1) : this;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return position == car.position && Objects.equals(name, car.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, position);
+    }
 }

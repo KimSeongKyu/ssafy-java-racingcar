@@ -1,12 +1,12 @@
 package step4.domain.car;
 
-import step4.domain.movement.MovementCondition;
 import step4.domain.name.Name;
 import step4.domain.name.Names;
 import step4.strategy.MovementStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class Cars {
@@ -35,5 +35,18 @@ public final class Cars {
 
     public final List<Car> values() {
         return values;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cars cars = (Cars) o;
+        return Objects.equals(values, cars.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
     }
 }
