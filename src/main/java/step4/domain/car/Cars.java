@@ -1,7 +1,7 @@
 package step4.domain.car;
 
-import step4.domain.name.Name;
-import step4.domain.name.Names;
+import step4.domain.car.name.Name;
+import step4.domain.car.name.Names;
 import step4.strategy.MovementStrategy;
 
 import java.util.ArrayList;

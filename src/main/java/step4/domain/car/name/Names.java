@@ -1,4 +1,4 @@
-package step4.domain.name;
+package step4.domain.car.name;
 
 import step4.exception.name.NamesAsStringEmptyException;
 import step4.exception.name.NamesAsStringNullPointerException;

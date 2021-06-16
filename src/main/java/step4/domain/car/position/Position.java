@@ -1,4 +1,4 @@
-package step4.domain.position;
+package step4.domain.car.position;
 
 import step4.exception.position.PositionNotPositiveException;
 

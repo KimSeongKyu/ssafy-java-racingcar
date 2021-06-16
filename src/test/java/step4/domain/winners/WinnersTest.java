@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import step4.domain.car.Car;
 import step4.domain.car.Cars;
-import step4.domain.name.Name;
+import step4.domain.car.name.Name;
 
 import java.util.ArrayList;
 import java.util.List;

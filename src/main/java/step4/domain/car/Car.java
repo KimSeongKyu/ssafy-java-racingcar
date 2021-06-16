@@ -1,6 +1,6 @@
 package step4.domain.car;
 
-import step4.domain.name.Name;
+import step4.domain.car.name.Name;
 import step4.exception.name.NameNullPointerException;
 import step4.strategy.MovementStrategy;
 

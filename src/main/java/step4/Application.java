@@ -2,7 +2,7 @@ package step4;
 
 import step4.domain.car.Cars;
 import step4.domain.movement.MovementCondition;
-import step4.domain.name.Names;
+import step4.domain.car.name.Names;
 import step4.domain.round.NumberOfRounds;
 import step4.domain.winners.Winners;
 import step4.util.StringUtility;

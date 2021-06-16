@@ -2,7 +2,7 @@ package step4.domain.car;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import step4.domain.name.Names;
+import step4.domain.car.name.Names;
 
 import java.util.Arrays;
 import java.util.List;
