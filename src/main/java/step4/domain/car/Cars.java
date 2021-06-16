@@ -2,6 +2,7 @@ package step4.domain.car;
 
 import step4.domain.car.name.Name;
 import step4.domain.car.name.Names;
+import step4.exception.car.CarsNullPointerException;
 import step4.strategy.MovementStrategy;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public final class Cars {
     }
 
     public Cars(final List<Car> cars) {
+        validateCarsAreNull(cars);
         values = cars;
     }
 
@@ -24,6 +26,12 @@ public final class Cars {
         return names.stream()
                 .map(name -> new Car(name))
                 .collect(Collectors.toList());
+    }
+
+    private final void validateCarsAreNull(final List<Car> cars) {
+        if(Objects.isNull(cars)) {
+            throw new CarsNullPointerException();
+        }
     }
 
     public final Cars move(final MovementStrategy movementStrategy) {
