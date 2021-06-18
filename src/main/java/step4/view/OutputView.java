@@ -9,8 +9,8 @@ public final class OutputView {
     private final static String RESULT_SENTENCE = "\n실행 결과";
     private final static String POSITION_TO_STRING = "-";
     private final static String COLON = " : ";
-    private static final String COMMA_WITH_SPACE = ", ";
-    private static final String WINNERS_ALERT_MESSAGE = "가 최종 우승했습니다.";
+    private final static String COMMA_WITH_SPACE = ", ";
+    private final static String WINNERS_ALERT_MESSAGE = "가 최종 우승했습니다.";
 
     private final static StringBuilder OUTPUT = new StringBuilder();
     private final static int EMPTY = 0;
