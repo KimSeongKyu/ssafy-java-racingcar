@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public final class Name {
 
-    private final static int EMPTY = 0;
     private final static int BOUND = 5;
 
     private final String value;
@@ -25,7 +24,7 @@ public final class Name {
     }
 
     private final void validateNameLengthInBound(final String name) {
-        if (!(EMPTY < name.length() && name.length() <= BOUND)) {
+        if (name.isEmpty() || name.length() > BOUND) {
             throw new NameLengthOutOfBoundException();
         }
     }
