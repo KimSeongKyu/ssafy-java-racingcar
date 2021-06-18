@@ -11,7 +11,7 @@ import step4.view.OutputView;
 
 public class Application {
 
-    private final static int START_ROUND = 1;
+    private final static int FIRST_ROUND = 1;
     private final static int MOVEMENT_CONDITION_BOUND = 10;
     private final static int CRITERION_FOR_MOVE = 4;
 
@@ -22,7 +22,8 @@ public class Application {
         final TotalRound totalRound = new TotalRound(InputView.inputTotalRound());
 
         OutputView.printResultSentence();
-        for (int round = START_ROUND; round <= totalRound.value(); round++) {
+        final int lastRound = totalRound.value();
+        for (int round = FIRST_ROUND; round <= lastRound; round++) {
             cars = cars.move(() -> MovementCondition.generateRandomNumberInBound(MOVEMENT_CONDITION_BOUND) >= CRITERION_FOR_MOVE);
             OutputView.printCarPositions(cars);
         }
