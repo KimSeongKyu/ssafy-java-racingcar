@@ -8,6 +8,7 @@ import step4.strategy.MovementStrategy;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public final class Cars {
 
@@ -40,8 +41,8 @@ public final class Cars {
                 .collect(Collectors.toList()));
     }
 
-    public final List<Car> values() {
-        return values;
+    public final Stream<Car> stream() {
+        return values.stream();
     }
 
     @Override

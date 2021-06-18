@@ -23,15 +23,13 @@ public final class Winners {
     }
 
     private final Cars identifyWinners(final Cars cars) {
-        final Position winnersPosition = new Position(cars.values()
-                .stream()
+        final Position winnersPosition = new Position(cars.stream()
                 .map(car -> car.position())
                 .mapToInt(position -> position.value())
                 .max()
                 .getAsInt());
 
-        return new Cars(cars.values()
-                .stream()
+        return new Cars(cars.stream()
                 .filter(car -> Objects.equals(car.position(), winnersPosition))
                 .collect(Collectors.toList()));
     }

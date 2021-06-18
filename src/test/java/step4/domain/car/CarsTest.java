@@ -62,7 +62,8 @@ class CarsTest {
         Cars cars = new Cars(new Names(Arrays.asList("name", "for", "test")));
 
         // when
-        List<Car> resultCarsValues = cars.values();
+        List<Car> resultCarsValues = cars.stream()
+                .collect(Collectors.toList());
 
         // then
         assertThat(resultCarsValues).isEqualTo(expectedCarsValues);
@@ -73,7 +74,7 @@ class CarsTest {
     void moveTest() {
         // given
         Cars cars = new Cars(new Names(Arrays.asList("name", "for", "test")));
-        Cars expectedCars = new Cars(cars.values()
+        Cars expectedCars = new Cars(cars
                 .stream()
                 .map(car -> new Car(car.name(), new Position(car.position().value()+1)))
                 .collect(Collectors.toList()));

@@ -20,7 +20,7 @@ public final class OutputView {
     }
 
     public final static void printCarPositions(final Cars cars) {
-        cars.values().stream().forEachOrdered(car -> {
+        cars.stream().forEachOrdered(car -> {
             OUTPUT.setLength(EMPTY);
             OUTPUT.append(car.name().value()).append(COLON);
 
@@ -37,7 +37,6 @@ public final class OutputView {
         OUTPUT.setLength(EMPTY);
 
         winners.cars()
-                .values()
                 .stream()
                 .forEachOrdered(car -> OUTPUT.append(car.name().value() + COMMA_WITH_SPACE));
 
