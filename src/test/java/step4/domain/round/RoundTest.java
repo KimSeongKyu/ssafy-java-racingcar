@@ -58,4 +58,18 @@ class RoundTest {
         // then
         assertThat(resultRound).isEqualTo(expectedRound);
     }
+
+    @DisplayName(value = "다음 라운드 진행 가능 여부를 판단하는 테스트")
+    @Test
+    void hasNextTest() {
+        // given
+        Round round = new Round(2, 1);
+        boolean expectedHasNext = false;
+
+        // when
+        boolean resultHasNext = round.hasNext();
+
+        // then
+        assertThat(resultHasNext).isEqualTo(expectedHasNext);
+    }
 }
