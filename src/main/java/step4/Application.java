@@ -18,13 +18,15 @@ public class Application {
         final Names names = new Names(StringUtility.splitByComma(InputView.inputNames()));
         Cars cars = new Cars(names);
 
-        final Round round = new Round(InputView.inputFinalRound());
+        Round round = new Round(InputView.inputFinalRound());
 
         OutputView.printResultSentence();
-        final int finalRound = round.finalRound();
-        for (int round = Round.FIRST_ROUND; round <= finalRound; round++) {
+        while(round.hasNext()) {
             cars = cars.move(() -> MovementCondition.generateRandomNumberInBound(MOVEMENT_CONDITION_BOUND) >= CRITERION_FOR_MOVE);
+
             OutputView.printRacingResultPerRound(cars);
+
+            round = round.next();
         }
         OutputView.printWinnersNames(new Winners(cars));
     }

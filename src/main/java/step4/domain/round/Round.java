@@ -7,9 +7,8 @@ import java.util.Objects;
 
 public final class Round {
 
-    public final static int FIRST_ROUND = 1;
-
     private final static int CRITERION_FOR_POSITIVE_NUMBER = 1;
+    private final static int FIRST_ROUND = 1;
     private final static int NEXT = 1;
 
     private final int currentRound;
