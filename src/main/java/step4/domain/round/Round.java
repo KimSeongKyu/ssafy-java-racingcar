@@ -42,6 +42,10 @@ public final class Round {
         return new Round(currentRound + NEXT, finalRound);
     }
 
+    public final boolean hasNext() {
+        return currentRound <= finalRound;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
