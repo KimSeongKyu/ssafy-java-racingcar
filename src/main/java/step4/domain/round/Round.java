@@ -20,8 +20,4 @@ public final class Round {
             throw new FinalRoundNotPositiveException();
         }
     }
-
-    public final int finalRound() {
-        return finalRound;
-    }
 }

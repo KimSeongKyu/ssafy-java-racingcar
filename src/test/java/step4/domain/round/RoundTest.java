@@ -33,18 +33,4 @@ class RoundTest {
             new Round(finalRound);
         });
     }
-
-    @DisplayName(value = "마지막 라운드를 반환하는 테스트")
-    @Test
-    void finalRoundTest() {
-        // given
-        int expectedFinalRound = 3;
-        Round round = new Round(expectedFinalRound);
-
-        // when
-        int resultFinalRound = round.finalRound();
-
-        // then
-        assertThat(resultFinalRound).isEqualTo(expectedFinalRound);
-    }
 }
