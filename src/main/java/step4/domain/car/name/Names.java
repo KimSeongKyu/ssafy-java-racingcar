@@ -20,7 +20,7 @@ public final class Names {
     private final List<Name> createNames(final List<String> names) {
         return names.stream()
                 .map(name -> new Name(name))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private final void validateNamesAreNull(final List<String> names) {

@@ -26,7 +26,7 @@ public final class Cars {
     private final static List<Car> createCars(final List<Name> names) {
         return names.stream()
                 .map(name -> new Car(name))
-                .collect(Collectors.toList());
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private final void validateCarsAreNull(final List<Car> cars) {
