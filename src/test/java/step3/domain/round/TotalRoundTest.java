@@ -7,7 +7,7 @@ import step3.exception.NumberOfRoundsOutOfBoundException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class NumberOfRoundsTest {
+public class TotalRoundTest {
 
     @DisplayName("라운드 수가 양수인지 검증하는 로직을 포함한 생성 테스트")
     @Test
