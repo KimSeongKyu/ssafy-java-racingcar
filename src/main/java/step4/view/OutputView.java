@@ -2,7 +2,11 @@ package step4.view;
 
 import step4.domain.car.Car;
 import step4.domain.car.Cars;
+import step4.domain.car.name.Name;
+import step4.domain.car.position.Position;
 import step4.domain.winners.Winners;
+
+import java.util.stream.IntStream;
 
 public final class OutputView {
 
@@ -19,18 +23,26 @@ public final class OutputView {
         System.out.println(RESULT_SENTENCE);
     }
 
-    public final static void printCarPositions(final Cars cars) {
+    public final static void printRacingResultPerRound(final Cars cars) {
         cars.stream().forEachOrdered(car -> {
             OUTPUT.setLength(EMPTY);
-            OUTPUT.append(car.name().value()).append(COLON);
 
-            for (int position = Car.START_POSITION; position <= car.position().value(); position++) {
-                OUTPUT.append(POSITION_TO_STRING);
-            }
+            printCarNameWithColon(car.name());
+            printCarPosition(car.position());
 
             System.out.println(OUTPUT);
         });
         System.out.println();
+    }
+
+    private final static void printCarNameWithColon(final Name name) {
+        OUTPUT.append(name.value()).append(COLON);
+    }
+
+    private final static void printCarPosition(final Position position) {
+        final int currentPosition = position.value();
+        IntStream.rangeClosed(Car.START_POSITION, currentPosition)
+                .forEach(i -> OUTPUT.append(POSITION_TO_STRING));
     }
 
     public final static void printWinnersNames(final Winners winners) {
@@ -38,7 +50,9 @@ public final class OutputView {
 
         winners.cars()
                 .stream()
-                .forEachOrdered(car -> OUTPUT.append(car.name().value() + COMMA_WITH_SPACE));
+                .map(car -> car.name())
+                .map(name -> name.value())
+                .forEachOrdered(name -> OUTPUT.append(name + COMMA_WITH_SPACE));
 
         OUTPUT.setLength(OUTPUT.length() - COMMA_WITH_SPACE.length());
         OUTPUT.append(WINNERS_ALERT_MESSAGE);

@@ -25,7 +25,7 @@ public class Application {
         final int lastRound = totalRound.value();
         for (int round = FIRST_ROUND; round <= lastRound; round++) {
             cars = cars.move(() -> MovementCondition.generateRandomNumberInBound(MOVEMENT_CONDITION_BOUND) >= CRITERION_FOR_MOVE);
-            OutputView.printCarPositions(cars);
+            OutputView.printRacingResultPerRound(cars);
         }
         OutputView.printWinnersNames(new Winners(cars));
     }
