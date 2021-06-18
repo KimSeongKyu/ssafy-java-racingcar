@@ -25,7 +25,7 @@ public final class Winners {
     private final Cars identifyWinners(final Cars cars) {
         final Position winnersPosition = new Position(cars.stream()
                 .map(car -> car.position())
-                .mapToInt(position -> position.value())
+                .mapToInt(position -> position.position())
                 .max()
                 .getAsInt());
 

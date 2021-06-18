@@ -80,7 +80,7 @@ class CarTest {
     void moveTest() {
         // given
         Car car = new Car(new Name("kim"));
-        Car expectedCar = new Car(car.name(), new Position(car.position().value() + 1));
+        Car expectedCar = new Car(car.name(), new Position(car.position().position() + 1));
 
         // when
         Car resultCar = car.move(() -> true);

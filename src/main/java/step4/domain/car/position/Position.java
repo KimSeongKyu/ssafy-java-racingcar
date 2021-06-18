@@ -8,11 +8,11 @@ public final class Position {
 
     private final static int CRITERION_FOR_POSITIVE_NUMBER = 1;
 
-    private final int value;
+    private final int position;
 
     public Position(final int position) {
         validatePositionIsPositive(position);
-        value = position;
+        this.position = position;
     }
 
     private final void validatePositionIsPositive(final int position) {
@@ -21,8 +21,8 @@ public final class Position {
         }
     }
 
-    public final int value() {
-        return value;
+    public final int position() {
+        return position;
     }
 
     @Override
@@ -30,11 +30,11 @@ public final class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
-        return value == position.value;
+        return this.position == position.position;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(position);
     }
 }

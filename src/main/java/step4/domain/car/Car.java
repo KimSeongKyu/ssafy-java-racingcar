@@ -39,7 +39,7 @@ public final class Car {
     }
 
     public final Car move(final MovementStrategy movementStrategy) {
-        return movementStrategy.isMovable() ? new Car(name, new Position(position.value() + 1)) : this;
+        return movementStrategy.isMovable() ? new Car(name, new Position(position.position() + 1)) : this;
     }
 
     public final Name name() {

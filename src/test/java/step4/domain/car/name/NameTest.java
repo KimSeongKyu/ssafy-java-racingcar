@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 class NameTest {
 
-    static Stream<Arguments> provideNameValueForConstructThrowExceptionTest() {
+    static Stream<Arguments> provideNameForConstructThrowExceptionTest() {
         return Stream.of(
                 Arguments.of(null, new NameNullPointerException()),
                 Arguments.of("", new NameLengthOutOfBoundException()),
@@ -27,10 +27,10 @@ class NameTest {
     @Test
     void constructTest() {
         // given
-        String nameValue = "kim";
+        String name = "kim";
 
         // when
-        Name resultName = new Name(nameValue);
+        Name resultName = new Name(name);
 
         // then
         assertThat(resultName).isNotNull();
@@ -38,25 +38,25 @@ class NameTest {
 
     @DisplayName(value = "String형 이름이 null 혹은 글자 수가 범위를 벗어난 경우 생성 시 예외가 발생하는 테스트")
     @ParameterizedTest(name = "{index}. String형 이름: {0} 발생하는 예외: {1}")
-    @MethodSource(value = "provideNameValueForConstructThrowExceptionTest")
-    void constructThrowExceptionTest(String nameValue, RuntimeException exception) {
+    @MethodSource(value = "provideNameForConstructThrowExceptionTest")
+    void constructThrowExceptionTest(String name, RuntimeException exception) {
         // when and then
         assertThatExceptionOfType(exception.getClass()).isThrownBy(() -> {
-            new Name(nameValue);
+            new Name(name);
         });
     }
 
     @DisplayName(value = "String형 이름을 반환하는 테스트")
     @Test
-    void valueTest() {
+    void nameTest() {
         // given
-        String expectedNameValue = "kim";
-        Name name = new Name(expectedNameValue);
+        String expectedName = "kim";
+        Name name = new Name(expectedName);
 
         // when
-        String resultNameValue = name.value();
+        String resultName = name.name();
 
         // then
-        assertThat(resultNameValue).isEqualTo(expectedNameValue);
+        assertThat(resultName).isEqualTo(expectedName);
     }
 }

@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 
 public final class Names {
 
-    private final List<Name> values;
+    private final List<Name> names;
 
     public Names(final List<String> names) {
         validateNamesAreNull(names);
         validateNamesAreEmpty(names);
-        values = createNames(names);
+        this.names = createNames(names);
     }
 
     private final List<Name> createNames(final List<String> names) {
@@ -35,7 +35,7 @@ public final class Names {
         }
     }
 
-    public final List<Name> values() {
-        return values;
+    public final List<Name> names() {
+        return names;
     }
 }

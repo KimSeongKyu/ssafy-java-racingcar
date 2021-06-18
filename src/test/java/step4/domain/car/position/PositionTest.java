@@ -13,10 +13,10 @@ class PositionTest {
     @Test
     void constructTest() {
         // given
-        int positionValue = 1;
+        int position = 1;
 
         // when
-        Position resultPosition = new Position(positionValue);
+        Position resultPosition = new Position(position);
 
         // then
         assertThat(resultPosition).isNotNull();
@@ -26,25 +26,25 @@ class PositionTest {
     @Test
     void constructThrowExceptionTest() {
         // given
-        int positionValue = 0;
+        int position = 0;
 
         // when and then
         assertThatExceptionOfType(PositionNotPositiveException.class).isThrownBy(() -> {
-            new Position(positionValue);
+            new Position(position);
         });
     }
 
     @DisplayName(value = "int형 위치를 반환하는 테스트")
     @Test
-    void valueTest() {
+    void positionTest() {
         // given
-        int expectedPositionValue = 1;
-        Position position = new Position(expectedPositionValue);
+        int expectedPosition = 1;
+        Position position = new Position(expectedPosition);
 
         // when
-        int resultPositionValue = position.value();
+        int resultPosition = position.position();
 
         // then
-        assertThat(resultPositionValue).isEqualTo(expectedPositionValue);
+        assertThat(resultPosition).isEqualTo(expectedPosition);
     }
 }

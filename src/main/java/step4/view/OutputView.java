@@ -36,11 +36,11 @@ public final class OutputView {
     }
 
     private final static void printCarNameWithColon(final Name name) {
-        OUTPUT.append(name.value()).append(COLON);
+        OUTPUT.append(name.name()).append(COLON);
     }
 
     private final static void printCarPosition(final Position position) {
-        final int currentPosition = position.value();
+        final int currentPosition = position.position();
         IntStream.rangeClosed(Car.START_POSITION, currentPosition)
                 .forEach(i -> OUTPUT.append(POSITION_TO_STRING));
     }
@@ -51,7 +51,7 @@ public final class OutputView {
         winners.cars()
                 .stream()
                 .map(car -> car.name())
-                .map(name -> name.value())
+                .map(name -> name.name())
                 .forEachOrdered(name -> OUTPUT.append(name + COMMA_WITH_SPACE));
 
         OUTPUT.setLength(OUTPUT.length() - COMMA_WITH_SPACE.length());

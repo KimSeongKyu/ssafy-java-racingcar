@@ -9,12 +9,12 @@ public final class Name {
 
     private final static int BOUND = 5;
 
-    private final String value;
+    private final String name;
 
     public Name(final String name) {
         validateNameIsNull(name);
         validateNameLengthInBound(name);
-        value = name;
+        this.name = name;
     }
 
     private final void validateNameIsNull(final String name) {
@@ -29,8 +29,8 @@ public final class Name {
         }
     }
 
-    public final String value() {
-        return value;
+    public final String name() {
+        return name;
     }
 
     @Override
@@ -38,11 +38,11 @@ public final class Name {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Name name = (Name) o;
-        return Objects.equals(value, name.value);
+        return Objects.equals(this.name, name.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value);
+        return Objects.hash(name);
     }
 }

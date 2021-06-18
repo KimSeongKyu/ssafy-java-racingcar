@@ -43,30 +43,30 @@ class CarsTest {
     @DisplayName(value = "Car 리스트가 null이거나 빈 리스트일 경우 생성 시 예외가 발생하는 테스트")
     @ParameterizedTest(name = "{index}. Car 리스트: {0} 발생하는 예외: {1}")
     @MethodSource(value = "provideCarListForConstructThrowExceptionTest")
-    void constructThrowExceptionTest(List<Car> carsValues, RuntimeException exception) {
+    void constructThrowExceptionTest(List<Car> cars, RuntimeException exception) {
         // when and then
         assertThatExceptionOfType(exception.getClass()).isThrownBy(() -> {
-            new Cars(carsValues);
+            new Cars(cars);
         });
     }
 
     @DisplayName(value = "Car 리스트를 반환하는 테스트")
     @Test
-    void valuesTest() {
+    void carsTest() {
         // given
-        List<Car> expectedCarsValues = new ArrayList<>();
-        expectedCarsValues.add(new Car(new Name("name")));
-        expectedCarsValues.add(new Car(new Name("for")));
-        expectedCarsValues.add(new Car(new Name("test")));
+        List<Car> expectedCars = new ArrayList<>();
+        expectedCars.add(new Car(new Name("name")));
+        expectedCars.add(new Car(new Name("for")));
+        expectedCars.add(new Car(new Name("test")));
 
         Cars cars = new Cars(new Names(Arrays.asList("name", "for", "test")));
 
         // when
-        List<Car> resultCarsValues = cars.stream()
+        List<Car> resultCars = cars.stream()
                 .collect(Collectors.toList());
 
         // then
-        assertThat(resultCarsValues).isEqualTo(expectedCarsValues);
+        assertThat(resultCars).isEqualTo(expectedCars);
     }
 
     @DisplayName(value = "전략 패턴에 따라 자동차들이 이동하는 테스트")
@@ -76,7 +76,7 @@ class CarsTest {
         Cars cars = new Cars(new Names(Arrays.asList("name", "for", "test")));
         Cars expectedCars = new Cars(cars
                 .stream()
-                .map(car -> new Car(car.name(), new Position(car.position().value()+1)))
+                .map(car -> new Car(car.name(), new Position(car.position().position()+1)))
                 .collect(Collectors.toList()));
 
         // when

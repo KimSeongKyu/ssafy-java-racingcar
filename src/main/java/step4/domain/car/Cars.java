@@ -12,15 +12,15 @@ import java.util.stream.Stream;
 
 public final class Cars {
 
-    private final List<Car> values;
+    private final List<Car> cars;
 
     public Cars(final Names names) {
-        this(createCars(names.values()));
+        this(createCars(names.names()));
     }
 
     public Cars(final List<Car> cars) {
         validateCarsAreNull(cars);
-        values = cars;
+        this.cars = cars;
     }
 
     private final static List<Car> createCars(final List<Name> names) {
@@ -36,13 +36,13 @@ public final class Cars {
     }
 
     public final Cars move(final MovementStrategy movementStrategy) {
-        return new Cars(values.stream()
+        return new Cars(cars.stream()
                 .map(car -> car.move(movementStrategy))
                 .collect(Collectors.toList()));
     }
 
     public final Stream<Car> stream() {
-        return values.stream();
+        return cars.stream();
     }
 
     @Override
@@ -50,11 +50,11 @@ public final class Cars {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cars cars = (Cars) o;
-        return Objects.equals(values, cars.values);
+        return Objects.equals(this.cars, cars.cars);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(values);
+        return Objects.hash(cars);
     }
 }

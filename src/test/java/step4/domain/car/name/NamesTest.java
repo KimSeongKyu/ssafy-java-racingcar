@@ -29,10 +29,10 @@ class NamesTest {
     @Test
     void constructTest() {
         // given
-        List<String> namesValues = Arrays.asList(new String[]{"name", "for", "test"});
+        List<String> names = Arrays.asList(new String[]{"name", "for", "test"});
 
         // when
-        Names resultNames = new Names(namesValues);
+        Names resultNames = new Names(names);
 
         // then
         assertThat(resultNames).isNotNull();
@@ -41,26 +41,26 @@ class NamesTest {
     @DisplayName(value = "String형 이름 리스트가 null 혹은 빈 리스트일 경우 생성 시 예외가 발생하는 테스트")
     @ParameterizedTest(name = "{index}. String형 이름 리스트: {0} 발생하는 예외: {1}")
     @MethodSource(value = "provideNullAndEmptyListForConstructThrowExceptionTest")
-    void constructThrowExceptionTest(List<String> namesValues, RuntimeException exception) {
+    void constructThrowExceptionTest(List<String> names, RuntimeException exception) {
         // when and then
-        assertThatExceptionOfType(exception.getClass()).isThrownBy(() -> new Names(namesValues));
+        assertThatExceptionOfType(exception.getClass()).isThrownBy(() -> new Names(names));
     }
 
     @DisplayName(value = "Name 리스트를 반환하는 테스트")
     @Test
-    void valuesTest() {
+    void namesTest() {
         // given
-        List<Name> expectedNamesValues = new ArrayList<>();
-        expectedNamesValues.add(new Name("name"));
-        expectedNamesValues.add(new Name("for"));
-        expectedNamesValues.add(new Name("test"));
+        List<Name> expectedNames = new ArrayList<>();
+        expectedNames.add(new Name("name"));
+        expectedNames.add(new Name("for"));
+        expectedNames.add(new Name("test"));
 
         Names names = new Names(Arrays.asList(new String[]{"name", "for", "test"}));
 
         // when
-        List<Name> resultNamesValues = names.values();
+        List<Name> resultNames = names.names();
 
         // then
-        assertThat(resultNamesValues).isEqualTo(expectedNamesValues);
+        assertThat(resultNames).isEqualTo(expectedNames);
     }
 }
