@@ -33,4 +33,18 @@ class RoundTest {
             new Round(finalRound);
         });
     }
+
+    @DisplayName(value = "다음 라운드로 진행하는 테스트")
+    @Test
+    void nextTest() {
+        // given
+        Round round = new Round(1);
+        Round expectedRound = new Round(2, 1);
+
+        // when
+        Round resultRound = round.next();
+
+        // then
+        assertThat(resultRound).isEqualTo(expectedRound);
+    }
 }
