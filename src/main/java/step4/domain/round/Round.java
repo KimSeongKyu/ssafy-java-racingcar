@@ -1,5 +1,6 @@
 package step4.domain.round;
 
+import step4.exception.round.CurrentRoundNotPositiveException;
 import step4.exception.round.FinalRoundNotPositiveException;
 
 import java.util.Objects;
@@ -19,9 +20,16 @@ public final class Round {
     }
 
     public Round(final int currentRound, final int finalRound) {
+        validateCurrentRoundIsPositive(currentRound);
         validateFinalRoundIsPositive(finalRound);
         this.currentRound = currentRound;
         this.finalRound = finalRound;
+    }
+
+    private final void validateCurrentRoundIsPositive(final int currentRound) {
+        if (currentRound < CRITERION_FOR_POSITIVE_NUMBER) {
+            throw new CurrentRoundNotPositiveException();
+        }
     }
 
     private final void validateFinalRoundIsPositive(final int finalRound) {
